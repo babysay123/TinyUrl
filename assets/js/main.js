@@ -1,5 +1,5 @@
 (function($) {
-	
+
 	var settings = {
 		// Full screen header?
 		fullScreenHeader: true,
@@ -8,7 +8,84 @@
 		// Parallax factor (lower = more intense, higher = less intense).
 		parallaxFactor: 10
 	};
-	console.log(skel);
+  var utils = {
+    reqFlag:false,
+    request:function(url, data, fn) {
+      var _ts = this;
+      if (!_ts.reqFlag) {
+        _ts.reqFlag = true;
+        $.ajax({
+      		type : "POST",
+      		url : url,
+      		// contentType : "application/json; charset=utf-8",
+      		data : data,//JSON.stringify(data),
+      		dataType : "json",
+      		// beforeSend : function(xhr) {
+      		// 	xhr.setRequestHeader('sessionid', sessionStorage.getItem('sessionid'));
+      		// },
+      		success : function(res) {
+            _ts.reqFlag = false;
+            if (typeof fn !== "function") { return ; }
+            fn(res);
+      		},
+      		error : function(message) {
+      			console.log(message);
+      		}
+      	});
+      }else{
+        _ts.tips("wait a second please.")
+      }
+    },
+    isURL:function(url) {
+        var regExp = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/;
+        if (url.match(regExp)) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    trim: function( string ) {
+        return string.replace(/(^\s*)|(\s*$)/g,'');
+    },
+    isEmail:function(str){
+        if(!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(str))){
+            return false;
+        }
+        return true;
+    },
+    tips:function(msg, time, skin){
+      var _ts = this;
+      if (_ts.trim(msg).length == 0) { return false; }
+      var t = time? time : 2, s = skin? skin : "msg";
+      layer.open({ content:msg, skin:s, time:t});
+    }
+  }
+
+  var shorten = {
+    form:"#shortenForm",
+    verify:function(){
+      var _original = $(_ts.form).find("textarea[name=original]"),
+          _short = $(_ts.form).find("input[name=shorten]");
+      //
+
+    },
+    control:function(){
+      var _ts = this;
+      $(_ts.form).on("click", "input[type=submit]", function(e){
+        console.log("click submit");
+
+      });
+    },
+    init:function(){
+      this.control();
+    }
+  }
+
+  var contact = {
+
+  }
+
+	// console.log(skel);
 	skel.breakpoints({
 		wide: '(max-width: 1680px)',
 		normal: '(max-width: 1080px)',
@@ -104,6 +181,9 @@
 				.trigger('resize.overflow_parallax');
 		}
 
+    // start short
+    shorten.init();
+    // utils.tips("hello world!");
 		// Poptrox.
 			// $('.gallery').poptrox({
 			// 	useBodyOverflow: false,
