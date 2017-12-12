@@ -64,16 +64,38 @@
   var shorten = {
     form:"#shortenForm",
     verify:function(){
+      var _ts = this;
       var _original = $(_ts.form).find("textarea[name=original]"),
           _short = $(_ts.form).find("input[name=shorten]");
-      //
-
+      if (_original.length > 0 && _short.length > 0) {
+        if (utils.trim(_original.val()).length == 0) {
+          _original.siblings(".st-error").text("Write down the original URL please.");
+          return false;
+        } else if (!utils.isURL(_original.val())) {
+          _original.siblings(".st-error").text("Please enter URL correctly.");
+          return false;
+        } else {
+          _original.siblings(".st-error").text("");
+        }
+        return true;
+      } else {
+        console.log("error");
+      }
     },
     control:function(){
       var _ts = this;
+      var _original = $(_ts.form).find("textarea[name=original]");
       $(_ts.form).on("click", "input[type=submit]", function(e){
-        console.log("click submit");
-
+        console.log(e);
+        if (_ts.verify()) {
+          var url = "#";
+          var data = {
+            original:_original.val()
+          }
+          utils.request(url, data, function(res){
+            console.log(res);
+          });
+        }
       });
     },
     init:function(){
