@@ -270,20 +270,6 @@
 
     // contact us
     contact.init();
-    
-    // utils.tips("hello world!");
-		// Poptrox.
-			// $('.gallery').poptrox({
-			// 	useBodyOverflow: false,
-			// 	usePopupEasyClose: false,
-			// 	overlayColor: '#0a1919',
-			// 	overlayOpacity: (skel.vars.IEVersion < 9 ? 0 : 0.75),
-			// 	usePopupDefaultStyling: false,
-			// 	usePopupCaption: true,
-			// 	popupLoaderText: '',
-			// 	windowMargin: 10,
-			// 	usePopupNav: true
-			// });
 
 	});
 
