@@ -104,6 +104,68 @@
   }
 
   var contact = {
+    form:"#contactForm",
+    verify:function(inputs){
+      if (inputs.name.length > 0 && inputs.email.length > 0 && inputs.subject.length > 0 && inputs.message.length > 0) {
+        if (utils.trim(inputs.name.val()).length == 0) {
+          inputs.name.siblings(".st-error").text("Enter your name please.")
+          return false;
+        }else{
+          inputs.name.siblings(".st-error").text("");
+        }
+        if (!utils.isEmail(inputs.email.val())) {
+          inputs.email.siblings(".st-error").text("Please enter Email correctly.");
+          return false;
+        }else{
+          inputs.email.siblings(".st-error").text("");
+        }
+        if (utils.trim(inputs.subject.val()).length == 0) {
+          inputs.subject.siblings(".st-error").text("Enter your subject please.");
+          return false;
+        }else{
+          inputs.subject.siblings(".st-error").text("");
+        }
+        if (utils.trim(inputs.message.val()).length == 0) {
+          inputs.message.siblings(".st-error").text("Thanks in advance with your suggestion.");
+          return false;
+        }else{
+          inputs.message.siblings(".st-error").text("");
+        }
+        return true;
+      }else{
+        utils.tips("inputs error");
+        return false;
+      }
+    },
+    control:function(){
+      var _ts = this;
+      $(_ts.form).on("click", "input[type=submit]", function(e){
+        var inputs = {
+          name:$(_ts.form).find('input[name=name]'),
+          email:$(_ts.form).find('input[name=email]'),
+          subject:$(_ts.form).find('input[name=subject]'),
+          message:$(_ts.form).find('input[name=message]'),
+        }
+        if (_ts.verify(inputs)) {
+          var url = "#";
+          var data = {
+            name:inputs.name.val(),
+            email:inputs.email.val(),
+            subject:inputs.subject.val(),
+            message:inputs.message.val(),
+          };
+          utils.request(url, data, function(res){
+            console.log(res);
+          });
+        }
+      });
+    },
+    init:function(){
+      this.control();
+    }
+  }
+
+  var share = {
 
   }
 
@@ -205,6 +267,10 @@
 
     // start short
     shorten.init();
+
+    // contact us
+    contact.init();
+    
     // utils.tips("hello world!");
 		// Poptrox.
 			// $('.gallery').poptrox({
