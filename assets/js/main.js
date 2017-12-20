@@ -114,7 +114,6 @@
       $(_ts.form).on("click", "input[type=submit]", function(e){
 				var _t = $(this), _name = _t.attr("name"), _dict = _ts.config[_name];
 				var _val = _ts.verify(_name);
-				console.log(_val);
 				if (_val && _dict) {
 					var data = {};
 					data[_dict.key[0]] = _val;

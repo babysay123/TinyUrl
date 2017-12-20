@@ -1419,7 +1419,8 @@
 	blockquote {
 		border-left: solid 0.5em #eae9e9;
 		padding: 1em 0 1em 2em;
-		font-style: italic;
+		font-style: normal;
+		/* font-style: italic; */
 		word-break: break-word;
 		overflow: hidden;
 		/* text-overflow:ellipsis;
