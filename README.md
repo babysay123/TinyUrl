@@ -1,3 +1,3 @@
-# just test and add a small object
+# just add a small object
 
 object names shorten
