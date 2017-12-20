@@ -1316,7 +1316,8 @@
 		background-size: auto, cover;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
-		font-family: 'Source Sans Pro', sans-serif;
+		/* font-family: 'Source Sans Pro', sans-serif; */
+		font-family: 'Microsoft YaHei', '	SimSun';
 		font-size: 18pt;
 		line-height: 1.75em;
 		font-weight: 300;
@@ -1419,10 +1420,10 @@
 		border-left: solid 0.5em #eae9e9;
 		padding: 1em 0 1em 2em;
 		font-style: italic;
-		/*word-break: break-word;*/
+		word-break: break-word;
 		overflow: hidden;
-		text-overflow:ellipsis;
-		white-space: nowrap;
+		/* text-overflow:ellipsis;
+		white-space: nowrap; */
 	}
 
 	p, ul, ol, dl, table {
@@ -2560,7 +2561,7 @@
 
 	}
 	.st-control{
-		
+
 	}
 	.st-error{
 		color: red;

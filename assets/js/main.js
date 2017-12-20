@@ -20,9 +20,6 @@
       		// contentType : "application/json; charset=utf-8",
       		data : data,//JSON.stringify(data),
       		dataType : "json",
-      		// beforeSend : function(xhr) {
-      		// 	xhr.setRequestHeader('sessionid', sessionStorage.getItem('sessionid'));
-      		// },
       		success : function(res) {
             _ts.reqFlag = false;
             if (typeof fn !== "function") { return ; }
@@ -56,8 +53,9 @@
     tips:function(msg, time, skin){
       var _ts = this;
       if (_ts.trim(msg).length == 0) { return false; }
-      var t = time? time : 2, s = skin? skin : "msg";
-      layer.open({ content:msg, skin:s, time:t});
+      var t = time? time : 2000, s = skin? skin : "msg";
+      // layer.open({ content:msg, skin:s, time:t});
+			layer.msg(msg, {offset:"auto"});
     }
   }
 
@@ -265,12 +263,13 @@
 				.trigger('resize.overflow_parallax');
 		}
 
-    // start short
-    shorten.init();
-
-    // contact us
-    contact.init();
-
+		layer.ready(function(){
+			// start short
+			shorten.init();
+			// contact us
+			contact.init();
+		  // layer.msg('很高兴一开场就见到你');
+		});
 	});
 
 })(jQuery);
