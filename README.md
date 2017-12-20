@@ -1,3 +1,3 @@
-# just add a small object
+# TinyUrl
 
-object names shorten
+URL shortening is used to create shorter aliases for original URLs.
