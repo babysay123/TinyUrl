@@ -1763,6 +1763,9 @@
 				background: rgba(58, 57, 57, 0.025);
 			}
 
+		input[name="L2S"], input[name="L2S"]:hover, input[name="L2S"]:active{
+			background: #203936;
+		}
 /* Box */
 
 	.box {

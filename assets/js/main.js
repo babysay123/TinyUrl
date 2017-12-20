@@ -14,6 +14,7 @@
       var _ts = this;
       if (!_ts.reqFlag) {
         _ts.reqFlag = true;
+				var _inx = layer.load(2);
         $.ajax({
       		type : "POST",
       		url : url,
@@ -28,7 +29,9 @@
       		error : function(message) {
       			console.log(message);
       		}
-      	});
+      	}).always(function(){
+					layer.close(_inx);
+				});
       }else{
         _ts.tips("wait a second please.")
       }
@@ -61,39 +64,79 @@
 
   var shorten = {
     form:"#shortenForm",
-    verify:function(){
+		config:{
+			"L2S": {
+				url: "http://ec2-54-89-255-231.compute-1.amazonaws.com/tinyurl/short-url",
+				key: ["long_url"]
+			},
+			"S2L": {
+				url: "http://ec2-54-89-255-231.compute-1.amazonaws.com/tinyurl/long-url",
+				key: ["short_url"]
+			},
+		},
+    verify:function(name){
       var _ts = this;
       var _original = $(_ts.form).find("textarea[name=original]"),
           _short = $(_ts.form).find("input[name=shorten]");
       if (_original.length > 0 && _short.length > 0) {
-        if (utils.trim(_original.val()).length == 0) {
-          _original.siblings(".st-error").text("Write down the original URL please.");
-          return false;
-        } else if (!utils.isURL(_original.val())) {
-          _original.siblings(".st-error").text("Please enter URL correctly.");
-          return false;
-        } else {
-          _original.siblings(".st-error").text("");
-        }
-        return true;
+				var _do = function(selector){
+					console.log(selector);
+					if (utils.trim(selector.val()).length == 0) {
+	          selector.siblings(".st-error").text("Write down the URL please.");
+	          return false;
+	        } else if (!utils.isURL(selector.val())) {
+	          selector.siblings(".st-error").text("Please enter URL correctly.");
+	          return false;
+	        } else {
+	          selector.siblings(".st-error").text("");
+	        }
+					return selector.val();
+				}
+				if (name == "L2S") {
+					_short.val("");
+					_short.siblings(".st-error").text("");
+					return _do(_original);
+				} else if (name == "S2L") {
+					_original.val("");
+					_original.siblings(".st-error").text("");
+					return _do(_short);
+				} else {
+					return false;
+				}
       } else {
         console.log("error");
       }
     },
     control:function(){
       var _ts = this;
-      var _original = $(_ts.form).find("textarea[name=original]");
+      var _original = $(_ts.form).find("textarea[name=original]"),
+					_short = $(_ts.form).find("input[name=shorten]");
       $(_ts.form).on("click", "input[type=submit]", function(e){
-        console.log(e);
-        if (_ts.verify()) {
-          var url = "#";
-          var data = {
-            original:_original.val()
-          }
-          utils.request(url, data, function(res){
-            console.log(res);
-          });
-        }
+				var _t = $(this), _name = _t.attr("name"), _dict = _ts.config[_name];
+				var _val = _ts.verify(_name);
+				console.log(_val);
+				if (_val && _dict) {
+					var data = {};
+					data[_dict.key[0]] = _val;
+					utils.request(_dict.url, data, function(res){
+						console.log(res);
+						res = JSON.parse(res);
+						var resData = res.url? res.url : undefined;
+						if (resData) {
+							for (var each in resData) {
+								if (resData.hasOwnProperty(each)) {
+									if (each.indexOf("short") > -1) {
+										_short.val(resData[each]);
+									} else if(each.indexOf("long") > -1) {
+										_original.val(resData[each]);
+									} else {
+
+									}
+								}
+							}
+						}
+					});
+				}
       });
     },
     init:function(){
@@ -145,7 +188,7 @@
           message:$(_ts.form).find('input[name=message]'),
         }
         if (_ts.verify(inputs)) {
-          var url = "#";
+          var url = "#"; //TODO Enter url
           var data = {
             name:inputs.name.val(),
             email:inputs.email.val(),
@@ -164,7 +207,16 @@
   }
 
   var share = {
-
+		id:"#footer",
+		control:function(){
+			var _ts = this;
+			$(_ts.id).on("click", "li a", function(e){
+				layer.msg("Thanks for your share");
+			});
+		},
+		init:function(){
+			this.control();
+		}
   }
 
 	// console.log(skel);
@@ -268,7 +320,8 @@
 			shorten.init();
 			// contact us
 			contact.init();
-		  // layer.msg('很高兴一开场就见到你');
+		  //
+			share.init();
 		});
 	});
 
