@@ -1,0 +1,12 @@
+product/
+dev/
+.vscode/
+.idea/
+.idea/workspace.xml
+
+cli/
+gulp/
+# sh/
+
+webpack/package-lock.json
+vue/package-lock.json

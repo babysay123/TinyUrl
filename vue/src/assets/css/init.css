@@ -1,0 +1,28 @@
+@charset "UTF-8";
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,textarea,p,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+body{font-family:"Heiti SC",'Helvetica','HelveticaNeue','Droidsansfallback','Droid Sans','Microsoft YaHei','Segoe',"Impact Regular";line-height:1;background:#F5F4F9;font-size:.35rem;}
+ol,ul{list-style:none;}
+a{text-decoration:none;outline:none;}
+img{border:none;display:block;}
+em{font-style:normal;}
+input,textarea,button{outline:none;border:0;border: none;}
+
+.cur{cursor:pointer;}
+.fw{overflow:hidden;}
+.fl{float:left;}
+.fr{float:right;}
+.white{white-space:pre-wrap;word-wrap:break-word;}
+.wzfw{text-overflow:Ellipsis;overflow:hidden;white-space:nowrap;}
+.ft0{font-size:0;}
+.tl{text-align:left;}
+.tc{text-align:center;}
+.w100{width:100%;}
+.pr{position:relative;}
+.dn{display:none;}
+.dInV{display:inline-block;vertical-align:middle;}
+.mr{margin:0 auto;}
+.pmAuto{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;}
+.clear{height:0;clear:both;font-size:0;line-height:0;zoom:1;}
+.cfff{color:#fff;}
+
