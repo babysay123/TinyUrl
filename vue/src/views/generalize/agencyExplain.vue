@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import Table from 'Components/active/agentTab'
 import headTitle from 'Components/agency/headTitleList'
 import { getVendorListApi, getVendorListDataApi } from 'Plugins/api'

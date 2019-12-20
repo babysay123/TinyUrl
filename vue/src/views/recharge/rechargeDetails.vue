@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import RechargeForm from 'Components/recharge/rechargeForm'
 export default {
   components: { Head, RechargeForm },

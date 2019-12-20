@@ -40,46 +40,48 @@
 <template>
   <section class="mine">
 
-    <Personal />
-
-    <div class="mine-operation">
+    <!-- <Personal /> -->
+    <!-- <div class="mine-operation">
       <div class="mine-opertiaon-recharge" @click="toLink">
         <h2>充值</h2>
       </div>
       <div class="mine-opertiaon-withdrawal" @click="routerLink({ path: '/mobile/mine/withdrawals.html', redirect: true })">
         <h2>提现</h2>
       </div>
-    </div>
-
-    <PersonalCell />
+    </div> -->
+    <!-- <PersonalCell /> -->
 
     <NavBottom />
-
     <Setting v-if="setting" />
-
     <PersonalInfo v-if="personalInfo" />
 
   </section>
 </template>
 
 <script>
-import Personal from 'Components/mine/personal'
-import PersonalCell from 'Components/mine/personalCell'
+// import Personal from 'Components/mine/personal'
+// import PersonalCell from 'Components/mine/personalCell'
 import NavBottom from 'Components/global/nav-bottom'
 import Setting from 'Components/mine/setting'
 import PersonalInfo from 'Components/mine/personalInfo'
-import { mapGetters, mapActions } from 'vuex'
+// import { mapGetters, mapActions } from 'vuex'
 // import { getBankInfoApi } from 'Plugins/api'
 export default {
-  components: { NavBottom, Personal, PersonalCell, Setting, PersonalInfo },
+  components: {
+    NavBottom,
+    // Personal,
+    // PersonalCell,
+    Setting,
+    PersonalInfo
+  },
   computed: {
-    ...mapGetters([ 'setting', 'personalInfo' ])
+    // ...mapGetters([ 'setting', 'personalInfo' ])
   },
   methods: {
-    ...mapActions([ 'refreshUserInfo' ]),
+    // ...mapActions([ 'refreshUserInfo' ]),
     toLink () {
-      this.$store.commit('voice', 'recharge')
-      this.$router.push('/rechargeList')
+      // this.$store.commit('voice', 'recharge')
+      // this.$router.push('/rechargeList')
     }
     // async withdrawalRedirect () {
     //   // 获取用户银行卡信息，有无信息分别对应跳转到提现和绑定页面
@@ -95,17 +97,17 @@ export default {
   },
   created () {
     // this.refreshUserInfo()
-    if (!this.Utils.Storage.get('music')) {
-      this.Utils.Storage.save('music', {
-        shake: true,
-        click: true,
-        message: true,
-        plan: true,
-        reg: true,
-        packet: true,
-        openVoice: true
-      })
-    }
+    // if (!this.Utils.Storage.get('music')) {
+    //   this.Utils.Storage.save('music', {
+    //     shake: true,
+    //     click: true,
+    //     message: true,
+    //     plan: true,
+    //     reg: true,
+    //     packet: true,
+    //     openVoice: true
+    //   })
+    // }
   }
 }
 </script>

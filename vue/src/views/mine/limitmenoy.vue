@@ -154,7 +154,7 @@ height: 100%;
 }
 </style>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 export default {
   components: { Head },
   data () {

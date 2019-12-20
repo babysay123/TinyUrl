@@ -1,10 +1,4 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-06-06 15:34:43
- * @LastEditTime: 2019-11-06 14:17:48
- * @LastEditors: Please set LastEditors
- -->
+<!-- -->
 <style lang="scss" scoped>
 .personal {
   height: 5rem;

@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import { LotteryShare, ShareList, CodeList, LotteryShareUpdate, LotteryShareDelete } from 'Plugins/api'
 import Popup from './popup.vue'
 import { Toast } from 'mint-ui'

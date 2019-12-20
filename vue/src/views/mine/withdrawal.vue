@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import LabelInput from 'Components/global/labelInput'
 import { isNull, BankValid, RealNameValid, PayPwdValid } from 'Plugins/utils/ValidatorUtil'
 import { bankInfoApi } from 'Plugins/api'

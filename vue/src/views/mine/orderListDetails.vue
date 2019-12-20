@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import OrderDetailsInfo from 'Components/orderList/orderDetailsInfo'
 import DetailsCard from 'Components/global/detailsCard'
 import { lotteryInfoApi, orderDetailsApi } from 'Plugins/api'

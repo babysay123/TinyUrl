@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import Header from 'Components/global/head_new'
+import Header from 'Components/global/head'
 import Title from 'Components/active/title'
 import Table from 'Components/active/table'
 import GetClientUrlParams from 'Plugins/getClientUrlParams.js'

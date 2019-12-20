@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import { getServiceListApi } from 'Plugins/api'
 import Clipboard from 'clipboard'
 import { Toast } from 'mint-ui'

@@ -159,7 +159,7 @@ html,body{
 </div>
 </template>
 <script>
-import Head from 'Components/global/head_new.vue'
+import Head from 'Components/global/head.vue'
 import Pop from 'Components/allpop'
 export default {
   components: { Head, Pop },

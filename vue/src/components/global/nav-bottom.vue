@@ -1,10 +1,4 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-06-06 15:34:43
- * @LastEditTime: 2019-08-25 15:39:09
- * @LastEditors: Please set LastEditors
- -->
+<!--  -->
 <style lang="scss" scoped>
 @import 'Assets/css/base.color.scss';
 
@@ -70,21 +64,24 @@
           class="icon iconfont"
           :class="[n.icon, n.link.includes(currentLink) ? 'text-col' : n.link === '/mobile/studio/#/chatroom' ? 'text-blue' : 'text-gray']"
         ></i>
-        <span class="rankingInfo-ren" v-if="index == 2 && chatRoom.unreadMsgRed > 0">
+        <!-- <span class="rankingInfo-ren" v-if="index == 2 && chatRoom.unreadMsgRed > 0">
           {{ chatRoom.unreadMsgRed > 99 ? '99+' : chatRoom.unreadMsgRed }}
-        </span>
+        </span> -->
         <!-- <img :class="{'pic1': n.link.includes(currentLink)}" :src="n.default"> -->
       </div>
 
-      <span :class="[ n.link.includes(currentLink) ? 'text-col' : n.link === '/chatroom' ? 'text-blue' : 'text-gray' ]">
+      <!-- <span :class="[ n.link.includes(currentLink) ? 'text-col' : n.link === '/chatroom' ? 'text-blue' : 'text-gray' ]">
         {{ n.text }}
-      </span>
+      </span> -->
     </li>
   </ul>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+// import {
+//   mapState
+//   // mapGetters
+// } from 'vuex'
 import 'Plugins/api'
 export default {
   data () {
@@ -139,77 +136,76 @@ export default {
   mounted () {
   },
   computed: {
-    ...mapGetters([ 'system_config' ]),
+    // ...mapGetters([ 'system_config' ]),
     // 显示聊天条数
-    ...mapState({
-      chatRoom (state) {
-        return state.chatRoom
-      },
-      init (state) {
-        return state.chatRoom.init
-      }
-    }),
+    // ...mapState({
+    //   chatRoom (state) {
+    //     return state.chatRoom
+    //   },
+    //   init (state) {
+    //     return state.chatRoom.init
+    //   }
+    // }),
     isOpenChatRoom () {
       // 根据系统配置信息判断是否开启聊天室功能
-      if (this.system_config.status && this.system_config.status.chatRoomOpenStatus === 'close') {
-        return [ ...this.nav.slice(0, 2), ...this.nav.slice(3) ]
-      } else {
-        return [ ...this.nav.slice(0, 3), ...this.nav.slice(4) ]
-      }
+      // if (this.system_config.status && this.system_config.status.chatRoomOpenStatus === 'close') {
+      //   return [ ...this.nav.slice(0, 2), ...this.nav.slice(3) ]
+      // } else {
+      //   return [ ...this.nav.slice(0, 3), ...this.nav.slice(4) ]
+      // }
+      return this.nav
     }
   },
   methods: {
     create () {
       if (this.init) {
-        if (!this.chatRoom.roomNmae) {
-          this.chatRoom.roomNmae = this.init.message.chatRooms[0].roomId
-        }
-        let roomss = this.init.message.chatRooms
-        let roomsLengh = roomss.length
-        for (let i = 0; i < roomsLengh; i++) {
-          if (roomss[i].roomId === this.chatRoom.roomNmae) {
-            // this.chatRoom.ws.send("{'event': 'joinRoom', 'data':'" + roomss[i].roomId + "'}")
-          }
-        }
-        let notReadSummaryList = this.init.message.notReadSummaryList
-        let nowMsg = this.Utils.Storage.get('privateChatUnread')
-        if (notReadSummaryList.length > 0) {
-          let notReadLeng = notReadSummaryList.length
-          let num = 0
-          for (let i = 0; i < notReadLeng; i++) {
-            num += notReadSummaryList[i].count
-          }
-          this.chatRoom.unreadMsgRed = num * 1 + nowMsg.length * 1
-        }
-        let hyUnread = this.Utils.Storage.get('hyUnread')
-        if (hyUnread) {
-          for (let key in hyUnread) {
-            if (key === this.init.message.member.openid) {
-              for (let key2 in sessionStorage) {
-                if (typeof sessionStorage[key2] === 'string' && typeof JSON.parse(sessionStorage[key2])) {
-                  if (JSON.parse(sessionStorage[key2])[0] && JSON.parse(sessionStorage[key2])[0].temporary) {
-                    if (key2 === this.init.message.member.openid) {
-                      this.chatRoom.unreadMsgRed += hyUnread[key].length
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        // if (!this.chatRoom.roomNmae) {
+        //   this.chatRoom.roomNmae = this.init.message.chatRooms[0].roomId
+        // }
+        // let roomss = this.init.message.chatRooms
+        // let roomsLengh = roomss.length
+        // for (let i = 0; i < roomsLengh; i++) {
+        //   if (roomss[i].roomId === this.chatRoom.roomNmae) {
+        //     // this.chatRoom.ws.send("{'event': 'joinRoom', 'data':'" + roomss[i].roomId + "'}")
+        //   }
+        // }
+        // let notReadSummaryList = this.init.message.notReadSummaryList
+        // let nowMsg = this.Utils.Storage.get('privateChatUnread')
+        // if (notReadSummaryList.length > 0) {
+        //   let notReadLeng = notReadSummaryList.length
+        //   let num = 0
+        //   for (let i = 0; i < notReadLeng; i++) {
+        //     num += notReadSummaryList[i].count
+        //   }
+        //   this.chatRoom.unreadMsgRed = num * 1 + nowMsg.length * 1
+        // }
+        // let hyUnread = this.Utils.Storage.get('hyUnread')
+        // if (hyUnread) {
+        //   for (let key in hyUnread) {
+        //     if (key === this.init.message.member.openid) {
+        //       for (let key2 in sessionStorage) {
+        //         if (typeof sessionStorage[key2] === 'string' && typeof JSON.parse(sessionStorage[key2])) {
+        //           if (JSON.parse(sessionStorage[key2])[0] && JSON.parse(sessionStorage[key2])[0].temporary) {
+        //             if (key2 === this.init.message.member.openid) {
+        //               this.chatRoom.unreadMsgRed += hyUnread[key].length
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
       }
     },
     routerLink (link) {
-      try {
-        if (link.includes('chatroom')) {
-          this.$store.commit('voice', 'room')
-        }
-        if (link.includes('preferActive')) {
-          this.$store.commit('voice', 'discounts')
-        }
-      } catch (error) {
-        console.log(error)
-      }
+      // try {
+      //   if (link.includes('chatroom')) {
+      //     this.$store.commit('voice', 'room')
+      //   }
+      //   if (link.includes('preferActive')) {
+      //     this.$store.commit('voice', 'discounts')
+      //   }
+      // } catch (error) { console.log(error) }
       if (
         link.indexOf('mine') > -1 &&
         (!this.Utils.Storage.get('sessionid') || !this.Utils.Storage.get('user'))

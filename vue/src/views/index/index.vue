@@ -123,8 +123,8 @@
       </div>
     </div>
     <el-row>
-      <el-button icon="el-icon-search" circle></el-button>
-      <el-button type="danger" icon="el-icon-delete" circle></el-button>
+      <el-button icon="el-icon-search"></el-button>
+      <el-button type="danger" icon="el-icon-delete"></el-button>
     </el-row>
     <!-- <Dragon v-if="showDragon && dragon" @closeDragon="dragon = false"/> -->
 

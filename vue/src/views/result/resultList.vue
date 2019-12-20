@@ -91,7 +91,7 @@
 import DividerTitle from 'Components/index/dividerTitle'
 import RollNotice from 'Components/index/rollNotice'
 import { noticeApi, resultListApi } from 'Plugins/api'
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import NavBottom from 'Components/global/nav-bottom'
 import ResultCard from 'Components/result/resultCard.js'
 import RefreshLoad from 'Components/global/refreshLoad'

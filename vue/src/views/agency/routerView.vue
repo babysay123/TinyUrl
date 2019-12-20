@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Header from 'Components/global/head_new'
+import Header from 'Components/global/head'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   components: { Header },

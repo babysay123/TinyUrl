@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import RechargeStep from 'Components/recharge/rechargeStep'
 import DetailsCard from 'Components/global/detailsCard'
 import { rechargeResultAPi } from 'Plugins/api'

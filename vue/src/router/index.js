@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from './login'
+import mine from './mine'
 
 Vue.use(Router)
 
@@ -21,7 +22,8 @@ let router = new Router({
       title: '首页'
     }
   },
-  ...login
+  ...login,
+  ...mine
   // {
   //   path: '/',
   //   name: '',

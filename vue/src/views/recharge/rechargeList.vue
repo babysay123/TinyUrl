@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import RechargeCell from 'Components/recharge/rechargeCell'
 import Rechargmiddle from './rechargmiddle'
 export default {

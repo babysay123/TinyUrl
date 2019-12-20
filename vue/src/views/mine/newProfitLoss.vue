@@ -118,7 +118,7 @@
 </template>
 <script>
 import { Toast } from 'mint-ui'
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import headTitle from 'Components/agency/headTitleList'
 import boxTitle from 'Components/agency/boxTitleList'
 import { getTodayProfitNavApi, getTodayProfitApi, roomListApi, shareResults } from 'Plugins/api'

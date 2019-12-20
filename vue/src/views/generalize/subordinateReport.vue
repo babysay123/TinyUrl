@@ -86,7 +86,7 @@
 <script>
 import Dataselect from './dataselect.vue'
 import { shareListApi, SubordinateReport, GlobalReport } from 'Plugins/api'
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import { sessionUtil } from './sessionUtil'
 import Popup from './popup'
 import reportDetall from './reportDetall'

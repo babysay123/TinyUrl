@@ -191,7 +191,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import ResultCard from 'Components/result/resultCard.js'
 import RefreshLoad from 'Components/global/refreshLoad'
 // import NavBottom from 'Components/global/nav-bottom'

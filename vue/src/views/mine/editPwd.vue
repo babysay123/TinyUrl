@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import Password from 'Components/mine/password'
 export default {
   components: { Head, Password },

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import InfoCard from 'Components/withdraw/infoCard'
 import LabelInput from 'Components/global/labelInput'
 import { getBetNumApi, withdrawApi } from 'Plugins/api'

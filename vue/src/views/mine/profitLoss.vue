@@ -212,7 +212,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import { profitLossApi, getBankInfoApi } from 'Plugins/api'
 import { mapGetters } from 'vuex'
 export default {

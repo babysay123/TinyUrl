@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import Popup from 'Components/global/popup'
 import Cell from 'Components/global/cell'
 import CellItems from 'Components/global/cellItems'

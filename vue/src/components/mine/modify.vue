@@ -58,7 +58,7 @@
 
 <script>
 import Popup from 'Components/global/popup'
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import ModifyInput from './modifyInput'
 import {
   chinese,

@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import Table from 'Components/active/agentTab'
 import mescroll from 'Components/global/mescroll'
 import headerSearch from 'Components/global/headerSearch'

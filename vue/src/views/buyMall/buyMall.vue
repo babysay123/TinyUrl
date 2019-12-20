@@ -405,7 +405,7 @@ image[lazy=loading] {
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 // import { getNavigatorApi,getNavigatorApi } from 'Plugins/api/buyMall'
 import { getGameSwitchApi, getHallInfosApi, getPlatformApi, getGameDetailsApi, loginGameApi, transferMoney, userInfoApi } from 'Plugins/api'
 import Chess from 'Components/index/chess'

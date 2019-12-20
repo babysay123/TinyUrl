@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import OpenForm from 'Components/agency/openForm'
 import OpenManage from 'Components/agency/openManage'
 import OperationPopup from 'Components/agency/operationPopup'

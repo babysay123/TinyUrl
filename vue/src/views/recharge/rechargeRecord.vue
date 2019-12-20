@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import RefreshLoad from 'Components/global/refreshLoad'
 import RechargeRecordCard from 'Components/recharge/rechargeRecordCard'
 import { rechargeRecordApi } from 'Plugins/api'

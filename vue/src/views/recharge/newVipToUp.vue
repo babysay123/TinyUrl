@@ -51,7 +51,7 @@
   </div>
 </template>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import informAlert from 'Components/global/informAlert'
 import { Toast } from 'mint-ui'
 import Clipboard from 'clipboard'

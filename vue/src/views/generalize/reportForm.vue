@@ -49,7 +49,7 @@
 <script>
 import { GlobalReport } from 'Plugins/api'
 import layer from 'vue-layer'
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 // import { sessionUtil } from 'Plugins/utils'
 import { newSessionStorage } from './utils'
 import Dataselect from './dataselect.vue'

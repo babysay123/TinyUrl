@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import RechargeListCard from 'Components/recharge/rechargeListCard'
 import RefreshLoad from 'Components/global/refreshLoad'
 import { rechargeListApi } from 'Plugins/api'

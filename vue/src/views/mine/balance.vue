@@ -48,7 +48,7 @@
   </section>
 </template>
 <script>
-import Head from 'Components/global/head_new.vue'
+import Head from 'Components/global/head.vue'
 import Goto from './goto'
 import AllPop from 'Components/allpop'
 export default {

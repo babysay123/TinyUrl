@@ -91,7 +91,7 @@
   </div>
 </template>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import { Toast } from 'mint-ui'
 import { myGeneralizeApi, isNowCommissionApi, getNowImmediatelyApi, myGetHistoryApi } from 'Plugins/api'
 import Popup from './popup'

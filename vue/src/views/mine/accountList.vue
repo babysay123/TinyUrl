@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import HeadPanel from 'Components/global/headPanel'
 import AccountListContainer from 'Components/orderList/accountListContainer'
 import { accountListApi } from 'Plugins/api'

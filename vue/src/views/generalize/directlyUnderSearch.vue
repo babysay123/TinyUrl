@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-import Head from 'Components/global/head_new'
+import Head from 'Components/global/head'
 import Table from 'Components/active/agentTab'
 import HeadDate from 'Components/agency/headTitleList'
 import headerSearch from 'Components/global/headerSearch'

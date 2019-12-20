@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import Head from 'Components/global/head_new.vue'
+import Head from 'Components/global/head.vue'
 import NavBottom from 'Components/global/nav-bottom'
 import Huodong from './huodong'
 // import { carouselApi } from 'Plugins/api'
