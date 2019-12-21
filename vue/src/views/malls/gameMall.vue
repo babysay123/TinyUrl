@@ -1,15 +1,27 @@
 <template>
-  <el-layout>
-    <div>hhh</div>
-  </el-layout>
+  <el-row>
+    <Carousel :imgClick="false" />
+    <BannerNotice :data="notices" />
+    <NavBottom />
+  </el-row>
 </template>
 
 <script>
+import Carousel from 'Components/index/carousel'
+import BannerNotice from 'Components/index/bannerNotice'
+import NavBottom from 'Components/global/nav-bottom'
+
 export default {
   name: 'gameMall',
+  components: {
+    Carousel,
+    BannerNotice,
+    NavBottom
+  },
   data () {
     return {
-      base: ''
+      base: '',
+      notices: []
     }
   }
 }

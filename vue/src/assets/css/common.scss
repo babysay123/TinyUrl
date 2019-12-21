@@ -243,7 +243,7 @@ textarea {
 .redBtn {
     margin: 20px 10px;
     // background: $baseCol;
-    background-image: linear-gradient($baseCol, $baseCol), linear-gradient($baseLightCol, $baseLightCol);
+    background-image: linear-gradient($baseCol, $baseLightCol), linear-gradient($baseCol, $baseLightCol);
     color: #fff;
     font-size: 16px;
     height: 40px;

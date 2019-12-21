@@ -11,26 +11,6 @@
 
     <div class="login-form">
       <Carousel :imgClick="false" />
-      <!-- <LoginInput
-        v-model="input.account"
-        placeholder="请输入账号"
-        icon="mobile"
-        minLength="4"
-        maxLength="16"
-      />
-      <LoginInput
-        v-model="input.password"
-        :inputType="'password'"
-        placeholder="请输入密码"
-        icon="password"
-        minLength="6"
-        maxLength="12"
-      /> -->
-      <!-- <Verification
-        v-model="input.headImg"
-        :baseimg="base64url"
-        @switch = "switch1"
-      ></Verification> -->
     </div>
 
     <div class="redBtn" @click="jump('login')">登录</div>

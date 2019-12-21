@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from './login'
 // import mine from './mine'
+import malls from './malls'
 
 Vue.use(Router)
 
@@ -26,7 +27,8 @@ let router = new Router({
       title: '首页'
     }
   },
-  ...login
+  ...login,
+  ...malls
   // ...mine
   // {
   //   path: '/',

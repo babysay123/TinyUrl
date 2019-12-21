@@ -10,9 +10,9 @@
       :disabled="disabled"
       :style="{ color: disabled ? '#333' : 'inherit' }"
       @input="ele => inputNumber(ele.target.value)"
-      @focus="focus = true"
-      @blur="focus = false"
     >
+    <!-- @focus="focus = true"
+      @blur="focus = false" -->
   </div>
 </template>
 
