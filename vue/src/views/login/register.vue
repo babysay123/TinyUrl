@@ -1,19 +1,13 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-09-16 14:07:14
- * @LastEditTime: 2019-10-27 20:24:16
- * @LastEditors: Please set LastEditors
- -->
+<!--  -->
 <template>
   <section style="margin-top: 1.125rem; overflow: hidden; margin-bottom: 50px;">
     <Head fixed>
-      <h3>快速注册</h3>
+      <h3>注册</h3>
     </Head>
 
-    <div class="register-logo">
+    <!-- <div class="register-logo">
       <img src="/mobile/images/weblogo.png">
-    </div>
+    </div> -->
 
     <div class="login-form">
 
@@ -39,32 +33,38 @@
         :minLength="c.minLength"
         :disabled="c.model === 'referrer' && hasReferrer"
       />
-      <Verification
-      v-model="input.verifyImg"
-      :baseimg="base64url"
-      @switch = "switch1"
-      ></Verification>
+
+      <!-- <Verification
+        v-model="input.verifyImg"
+        :baseimg="base64url"
+        @switch = "switch1"
+      ></Verification> -->
     </div>
 
-    <div class="lawLabel" >
+    <!-- <div class="lawLabel" >
       注册即代表我已满18岁并同意
       <a @click="agreement = true">《用户服务协议》</a>
-    </div>
+    </div> -->
 
-    <div class="redBtn" @click="onSubmit">
-      注册
-    </div>
+    <div class="redBtn" @click="onSubmit">注册</div>
 
-    <div class="whitBtn" @click="routerLink({ path: '/mobile/other/download.html', params: $route.query.c ? `?c=${$route.query.c}` : null, redirect: true })">
+    <!-- <div
+      class="whitBtn"
+      @click="routerLink({
+        path: '/mobile/other/download.html',
+        params: $route.query.c ? `?c=${$route.query.c}` : null,
+        redirect: true
+      })"
+    >
       下载App
-    </div>
+    </div> -->
 
-    <div class="login-tip">
+    <!-- <div class="login-tip">
       <span>
         已有账号？
         <router-link to='/login'>立即登录</router-link>
       </span>
-    </div>
+    </div> -->
 
     <div class="law-popup" v-if="agreement">
       <Head :backHandler="() => { this.agreement = !this.agreement }">
@@ -81,7 +81,7 @@
 import Head from 'Components/global/head'
 import LoginInput from 'Components/login/loginInput'
 import Verification from 'Components/login/verification'
-import { registerConfigApi, registerApi, verificationApi } from 'Plugins/api'
+// import { registerConfigApi, registerApi, verificationApi } from 'Plugins/api'
 import {
   usernameValid,
   passwordValid,
@@ -93,11 +93,15 @@ import {
   emailValid,
   referrerValid
 } from 'Plugins/validator'
-import { mapMutations } from 'vuex'
+// import { mapMutations } from 'vuex'
 
 import Law from './law.js'
 export default {
-  components: { Head, LoginInput, Verification },
+  components: {
+    Head,
+    LoginInput,
+    Verification
+  },
   data () {
     return {
       mask: false,
@@ -120,9 +124,23 @@ export default {
         referrer: ''
       },
       base: [
+        // {
+        //   model: 'account',
+        //   placeholder: '请输入账号(4-16个英文字母或数字)',
+        //   icon: 'user',
+        //   minLength: '4',
+        //   maxLength: '16'
+        // },
         {
-          model: 'account',
-          placeholder: '请输入账号(4-16个英文字母或数字)',
+          model: 'mobile',
+          placeholder: '请输入手机号码',
+          icon: 'mobile',
+          minLength: '11',
+          maxLength: '11'
+        },
+        {
+          model: 'mail',
+          placeholder: '请输入短信验证码',
           icon: 'user',
           minLength: '4',
           maxLength: '16'
@@ -148,7 +166,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations([ 'updateUserInfo' ]),
+    // ...mapMutations([ 'updateUserInfo' ]),
     onValid () {
       /** 将附加参数中必填和选填已有值的对象添加到 input 对象中 */
       this.config.forEach(e => {
@@ -217,118 +235,118 @@ export default {
       }
     },
     switch1 () {
-      verificationApi().then(res => {
-        if (res.code === 0) this.base64url = res.data
-      })
+      // verificationApi().then(res => {
+      //   if (res.code === 0) this.base64url = res.data
+      // })
     },
     async onSubmit () {
-      const validResult = this.onValid()
-      if (validResult) {
-        this.$toast({
-          message: validResult,
-          duration: 1800
-        })
-      } else {
-        this.mask = true
-        try {
-          const res = await registerApi(this.input)
-          const { code, msg } = res
-          if (code === 0) {
-            const { data } = res
-            this.updateUserInfo(data)
-            this.Utils.Storage.save('user', data)
-            this.$toast({
-              message: '注册成功~',
-              duration: 1800
-            })
-            setTimeout(() => {
-              this.$router.replace('/mine')
-            }, 1800)
-            return
-          } else {
-            this.$toast({
-              message: msg,
-              duration: 1800
-            })
-            this.mask = false
-          }
-        } catch (error) {
-          this.mask = false
-          if (error.response.status === 600) {
-            this.$toast({
-              message: '提交信息含有敏感字符，请修改后重新提交~',
-              duration: 1800
-            })
-          }
-        }
-        this.switch1()
-      }
+      // const validResult = this.onValid()
+      // if (validResult) {
+      //   this.$toast({
+      //     message: validResult,
+      //     duration: 1800
+      //   })
+      // } else {
+      //   this.mask = true
+      //   try {
+      //     const res = await registerApi(this.input)
+      //     const { code, msg } = res
+      //     if (code === 0) {
+      //       const { data } = res
+      //       this.updateUserInfo(data)
+      //       this.Utils.Storage.save('user', data)
+      //       this.$toast({
+      //         message: '注册成功~',
+      //         duration: 1800
+      //       })
+      //       setTimeout(() => {
+      //         this.$router.replace('/mine')
+      //       }, 1800)
+      //       return
+      //     } else {
+      //       this.$toast({
+      //         message: msg,
+      //         duration: 1800
+      //       })
+      //       this.mask = false
+      //     }
+      //   } catch (error) {
+      //     this.mask = false
+      //     if (error.response.status === 600) {
+      //       this.$toast({
+      //         message: '提交信息含有敏感字符，请修改后重新提交~',
+      //         duration: 1800
+      //       })
+      //     }
+      //   }
+      //   this.switch1()
+      // }
     },
     async getConfig () {
       /**
        * @author Cyan
        * @description 获取注册所需配置 过滤掉不需要展示的并将邀请码排序到最后 同时添加循环渲染所需要的 input 参数
        */
-      const res = await registerConfigApi()
-      if (res.code === 0) {
-        const { data } = res
-        this.config = data.filter(e => e.show === 1)
-          .sort((a, b) => a.type > b.type || a.type === 5 ? 1 : -1)
-          .map(e => {
-            switch (e.type) {
-              case 0:
-                e.model = 'real_name'
-                e.inputType = 'text'
-                e.minLength = '2'
-                e.maxLength = '20'
-                return e
-              case 1:
-                e.model = 'qq'
-                e.inputType = 'number'
-                e.minLength = '5'
-                e.maxLength = '12'
-                return e
-              case 2:
-                e.model = 'phone'
-                e.inputType = 'number'
-                e.minLength = '11'
-                e.maxLength = '11'
-                return e
-              case 3:
-                e.model = 'email'
-                e.inputType = 'text'
-                e.minLength = '2'
-                e.maxLength = '20'
-                return e
-              case 4:
-                e.model = 'wechat'
-                e.inputType = 'text'
-                e.minLength = '2'
-                e.maxLength = '20'
-                return e
-              case 5:
-                e.model = 'referrer'
-                e.inputType = 'number'
-                e.minLength = '8'
-                e.maxLength = '8'
-                return e
-              default:
-                return e
-            }
-          })
-      }
+      // const res = await registerConfigApi()
+      // if (res.code === 0) {
+      //   const { data } = res
+      //   this.config = data.filter(e => e.show === 1)
+      //     .sort((a, b) => a.type > b.type || a.type === 5 ? 1 : -1)
+      //     .map(e => {
+      //       switch (e.type) {
+      //         case 0:
+      //           e.model = 'real_name'
+      //           e.inputType = 'text'
+      //           e.minLength = '2'
+      //           e.maxLength = '20'
+      //           return e
+      //         case 1:
+      //           e.model = 'qq'
+      //           e.inputType = 'number'
+      //           e.minLength = '5'
+      //           e.maxLength = '12'
+      //           return e
+      //         case 2:
+      //           e.model = 'phone'
+      //           e.inputType = 'number'
+      //           e.minLength = '11'
+      //           e.maxLength = '11'
+      //           return e
+      //         case 3:
+      //           e.model = 'email'
+      //           e.inputType = 'text'
+      //           e.minLength = '2'
+      //           e.maxLength = '20'
+      //           return e
+      //         case 4:
+      //           e.model = 'wechat'
+      //           e.inputType = 'text'
+      //           e.minLength = '2'
+      //           e.maxLength = '20'
+      //           return e
+      //         case 5:
+      //           e.model = 'referrer'
+      //           e.inputType = 'number'
+      //           e.minLength = '8'
+      //           e.maxLength = '8'
+      //           return e
+      //         default:
+      //           return e
+      //       }
+      //     })
+      // }
     }
   },
   created () {
-    const c = this.$route.query.c
-    if (c) {
-      this.subjoin.referrer = c
-      this.hasReferrer = true
-      this.input = { ...this.input, referrer: c }
-    }
-    this.getSessionId()
-    this.getConfig()
-    this.switch1()
+    // const c = this.$route.query.c
+    // if (c) {
+    //   this.subjoin.referrer = c
+    //   this.hasReferrer = true
+    //   this.input = { ...this.input, referrer: c }
+    // }
+    // this.getSessionId()
+    // this.getConfig()
+    // this.switch1()
   }
 }
 </script>

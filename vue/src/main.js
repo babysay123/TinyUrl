@@ -29,11 +29,11 @@ import 'Plugins/rem/flexible'
 // import 'mint-ui/lib/style.css' // mint css和js分离
 
 // 自定义全局指令
-// import Directives from 'Plugins/directives'
-// // 自定义全局过滤器
-// import Filters from 'Plugins/filters'
-// // mixins
-// import Mixins from 'Plugins/mixins'
+import Directives from 'Plugins/directives'
+// 自定义全局过滤器
+import Filters from 'Plugins/filters'
+// mixins
+import Mixins from 'Plugins/mixins'
 
 // 二维码插件
 // import VueQriously from 'vue-qriously'
@@ -72,9 +72,9 @@ Vue.use(VueLazyload, {
   error: require('../public/img/lottery/icon_revocation1@3x.png')
 })
 
-// Object.keys(Directives).map(key => Vue.directive(key, Directives[key]))
-// Object.keys(Filters).map(key => Vue.filter(key, Filters[key]))
-// Vue.mixin(Mixins)
+Object.keys(Directives).map(key => Vue.directive(key, Directives[key]))
+Object.keys(Filters).map(key => Vue.filter(key, Filters[key]))
+Vue.mixin(Mixins)
 // Vue.use(VueQriously)
 
 // console.log(TEMPLATE_CONFIG)

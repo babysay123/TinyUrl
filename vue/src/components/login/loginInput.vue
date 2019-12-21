@@ -88,16 +88,18 @@ export default {
   width: 100%;
   display: flex;
   align-items: flex-end;
-  height: 50px;
-  line-height: 50px;
-  background-image: linear-gradient($baseCol, $baseCol), linear-gradient(#ccc, #ccc);
+  // height: 50px;
+  // line-height: 50px;
+  height: 42px;
+  line-height: 42px;
+  background-image: linear-gradient($baseCol, $baseCol), linear-gradient(#e2e2e2, #e2e2e2);
   background-position: center bottom, center bottom;
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   transition: .35s ease;
   .login-group-icon {
     width: 30px;
-    height: 50px;
+    height: 42px;
     font-size: 30px;
     color: #979797;
   }
@@ -108,8 +110,8 @@ export default {
     background: none;
     flex: 1;
     outline: none;
-    height: 48px;
-    line-height: 48px;
+    height: 40px;
+    line-height: 40px;
     padding-left: 10px;
     font-size: 14px;
     border: none;

@@ -1,6 +1,6 @@
 @import './normalize.scss';
-@import './result/index.scss';
-@import './active/index.scss';
+// @import './result/index.scss';
+// @import './active/index.scss';
 
 body {
   color:#333;
@@ -243,8 +243,9 @@ textarea {
 
 // 红色按钮
 .redBtn {
-    margin: 20px;
-    background: $baseCol;
+    margin: 20px 10px;
+    // background: $baseCol;
+    background-image: linear-gradient($baseCol, $baseCol), linear-gradient($baseLightCol, $baseLightCol);
     color: #fff;
     font-size: 16px;
     height: 40px;
@@ -252,6 +253,7 @@ textarea {
     text-align: center;
     border-radius: 5px;
     font-weight: 400;
+
     &:active {
         opacity: .7;
     }

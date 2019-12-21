@@ -1,0 +1,362 @@
+@import './normalize.scss';
+@import './result/index.scss';
+@import './active/index.scss';
+
+body {
+  color:#333;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #A1A1A1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #A1A1A1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #A1A1A1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #A1A1A1;
+}
+.clearfix {
+	zoom: 1;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+	height: 0;
+    overflow: hidden;
+}
+.clear{
+  clear: both;
+}
+a, button, pre {
+	outline: none;
+	border: none;
+}
+.overhide {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.wrap {
+    max-width: 780px;
+    margin: 0 auto;
+}
+.head-fixed-gap {
+    margin-top: 1.125rem;
+}
+.footer-fixed-gap {
+    margin-bottom: 50px;
+}
+.footer-menu {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    overflow: hidden;
+    z-index: 10;
+}
+[v-cloak] {display: none; }
+// .btn {
+// 	display: block;
+// 	text-align: center;
+// 	height: 1.125rem;
+// 	line-height: 1.125rem;
+// 	font-size: 14px;
+// 	border: 1px solid #cecece;
+// 	margin-bottom: 20px;
+// 	border-radius: 5px;
+// 	-moz-appearance: none;
+// 	-webkit-appearance: none;
+// }
+/** 全局颜色 **/
+.bg-col {
+    background-color: $baseCol;
+}
+.bg-whole {
+    background-color: $baseBg;
+}
+.bg-white {
+    background-color: $baseWhite;
+}
+.bg-gray {
+    background-color: $baseGray;
+}
+.bg-green {
+    background-color: $baseGreen;
+}
+.bg-blue {
+    background-color: $baseBlue;
+}
+.bg-red {
+    background-color: $baseRed;
+}
+/* 字体颜色 */
+.text-col {
+    color: $baseCol;
+}
+.text-black {
+    color: $baseBlack;
+}
+.text-gray {
+    color: $baseGray;
+}
+.text-red {
+    color: $baseRed;
+}
+.text-green {
+    color: $baseGreen;
+}
+.text-orange {
+    color: $baseOrange;
+}
+.text-white {
+    color: $baseWhite;
+}
+.text-blue {
+    color: $baseBlue;
+}
+.text-eee {
+    color: $baseEEE;
+}
+.text-deepGray {
+    color: $baseDeepGray;
+}
+
+.btn-col {
+    background: $baseCol;
+    color: #fff;
+}
+.btn-col:active {
+    background: $baseLightCol;
+}
+.btn-bet-col { //投注右下角按钮
+    background-color: $baseCol; //$baseCol;
+    color: $baseWhite;
+}
+.btn-bet-col:active {
+    background: $betBgActive;
+}
+.submit-col {	//投注弹出提交按钮
+    background: $baseOrigin;
+}
+.laws-head-col li a {
+    color: #333;
+}
+.laws-head-col li.active a {
+    background: $lawHeadCol !important;
+    color: #fff !important;
+}
+.laws-head-col li a:active {
+    background: $lawHeadColActive !important;
+    color: #fff !important;
+}
+.cur { cursor: pointer; }
+.fw { overflow: hidden; }
+.fl { float: left; }
+.fr { float: right; }
+.dl { display: block; }
+.white { white-space: pre-wrap; word-wrap: break-word; }
+.wzfw { text-overflow: Ellipsis; overflow: hidden; white-space: nowrap; }
+.ft0 { font-size: 0; }
+.tl { text-align: left; }
+.tc { text-align: center; }
+.w100 { width: 100%; }
+.pr { position: relative; }
+.dInV { display: inline-block; vertical-align: middle; }
+.pmAuto { position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }
+.cfff { color: #fff; }
+.dn { display: none; }
+body /deep/ .is-placemiddle,
+body /deep/ .mint-indicator,
+body /deep/ .mint-toast,
+body /deep/ .mint-toast-text,
+body /deep/ .mint-indicator-wrapper { z-index: 3000 !important; }
+.box-warp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 400;
+    width: 100%;
+    height: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, .6);
+}
+.box-warp:before {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+[v-cloak] { display: none; }
+.dragon_list.active {
+    border-color:$baseRed !important;
+    color:$baseRed !important;
+}
+.content-size.bg-col { border-color: $baseCol !important; }
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #A1A1A1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #A1A1A1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #A1A1A1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #A1A1A1;
+}
+.recharge-block .num li a:active,
+.recharge-block .num li.active a {
+    color: $baseCol;
+}
+.list-square .list-ul li a.active,
+.list-square .list-ul li a:active,
+.list-dragon .list-ul li a.active,
+.list-circle .list-ul li a.active,
+.list-circle .list-ul li a:active {
+    background: $baseCol;
+    border-color:$baseCol;
+}
+.recharge-btns .submit {
+    background: $baseCol;
+}
+body {
+    color:#333;
+}
+input,
+textarea {
+    border: 0;
+    -webkit-appearance: none;
+}
+
+// 超出一行隐藏
+.one-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 红色按钮
+.redBtn {
+    margin: 20px;
+    background: $baseCol;
+    color: #fff;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 400;
+    &:active {
+        opacity: .7;
+    }
+    &[disabled="disabled"] {
+        background: #ffd5cb;
+    }
+}
+.whitBtn {
+    margin: 20px;
+    background: #fff;
+    color: $baseCol;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 400;
+    border: 1px solid #dedede;
+    &:active {
+        opacity: .7;
+    }
+    &[disabled="disabled"] {
+        background: #f9f9f9;
+    }
+}
+// 暂无数据 网络异常 请求失败
+.noDatas{
+  width: 3rem;
+  display: block;
+  margin: 1.5rem auto 0.3rem;
+}
+// mint ui navbar
+.mint-navbar .mint-tab-item.is-selected {
+    border-bottom: 3px solid $baseCol!important;
+    color: $baseCol!important;
+    margin-bottom: -1px!important;
+}
+
+.mint-tab-item-label {
+    line-height: inherit!important;
+    font-size: 13px!important;
+    margin: 0 auto;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none !important;
+}
+
+// mint ui switch
+.mint-switch-input:checked + .mint-switch-core {
+    border-color: #04be02 !important;
+    background-color: #04be02 !important;
+}
+
+
+.room-title.active{
+    background: $baseCol;
+    color: #fff !important;
+}
+//去掉a 标签默认样式
+a{
+    color: currentColor
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+}
+// flex 一些样式
+
+.resultPop{
+     .title{
+        position: relative;
+        height: 1.16rem;
+        font-size: .5rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        .closeBtn{
+            position: absolute;
+            right: .2rem;
+            top: 50%;
+            width: .96rem;
+            height: .96rem;
+            margin-top: -.48rem;
+            background: url('/mobile/images/closeWhite.png') 50% no-repeat;
+            background-size: 50%;
+        }
+    }
+    .flex {
+        display: flex;
+        padding: 0 10px;
+        margin: 10px 0;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.5rem;
+    }
+    .popup {
+        border-radius: 5px;
+        width: 90%;
+        background: #fafafc;
+        padding: 0 0 5px;
+        overflow: hidden;
+    }
+    .label {
+        margin-right: 10px;
+    }
+}

@@ -99,8 +99,8 @@
       </h2>
       <a v-if="!isLogin" class="menu-right" @click="routerLink({ path: '/register' })">注册</a>
     </Head>
-    <Carousel />
-    <BannerNotice :data="notices"/>
+    <!-- <Carousel /> -->
+    <!-- <BannerNotice :data="notices"/> -->
     <div class="index-panel">
       <div class="user-panel" v-if="navType === 'game'">
         <p>账户余额</p>
@@ -140,8 +140,8 @@
 import Head from 'Components/global/head'
 // import Tab from 'Components/index/tab'
 // import DividerTitle from 'Components/index/dividerTitle'
-import Carousel from 'Components/index/carousel'
-import BannerNotice from 'Components/index/bannerNotice'
+// import Carousel from 'Components/index/carousel'
+// import BannerNotice from 'Components/index/bannerNotice'
 // import Dragon from 'Components/lottery/chatroom/module/dragon'
 import NavBottom from 'Components/global/nav-bottom'
 // import GenerEarn from 'Components/index/generEarn'
@@ -153,8 +153,8 @@ import NavBottom from 'Components/global/nav-bottom'
 export default {
   components: {
     Head,
-    Carousel,
-    BannerNotice,
+    // Carousel,
+    // BannerNotice,
     NavBottom
     // Dragon,
     // Tab,
@@ -164,7 +164,7 @@ export default {
   data () {
     return {
       tabs: 0,
-      tile: this.Utils.Storage.get('buyMallTile'),
+      title: this.Utils.Storage.get('buyMallTile'),
       notices: [],
       // records: [],
       dragon: false,
@@ -281,7 +281,11 @@ export default {
       // } else if (item.text === '充值存款') {
       //   this.$store.commit('voice', 'recharge')
       // }
-      // (item.callback && item.callback()) || this.routerLink({ path: !this.isLogin && item.needLogin ? '/login' : item.link, redirect: !this.isLogin && item.needLogin ? false : item.redirect })
+      (item.callback && item.callback()) ||
+        this.routerLink({
+          path: !this.isLogin && item.needLogin ? '/login' : item.link,
+          redirect: !this.isLogin && item.needLogin ? false : item.redirect
+        })
     },
     async getData () {
       // const res = await noticeApi()
@@ -329,7 +333,8 @@ export default {
     }
   },
   created () {
-    this.getData()
+    // this.getData()
+
     // this.userBalance = this.isLogin ? this.Utils.Storage.get('user').balance.toFixed(2) : null
   }
 }

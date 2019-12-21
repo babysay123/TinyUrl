@@ -46,28 +46,25 @@ export default new Vuex.Store({
     access_token: state => state.access_token
   },
   mutations: {
-    resetUnreadMsg (state) {
-      state.chatRoom.unreadMsgRed = 0
-    },
+    // resetUnreadMsg (state) {
+    //   state.chatRoom.unreadMsgRed = 0
+    // },
     setAccess_token (state, token) {
       state.access_token = token
     }
   },
   actions: {
-    friendopenid (context, data) {
-      context.commit('friendopenid', data)
-    },
-    // 投注区
-    SetLotteryId (context, data) {
-      context.commit('SetLotteryId', data)
-    },
-    LotteryPage (context, data) {
-      // state.Lottery = data
-      context.commit('LotteryPage', data)
-    },
-    ShareCodeUpdate (context, data) {
-      context.commit('ShareCodeUpdate', data)
-    },
+    // // 投注区
+    // SetLotteryId (context, data) {
+    //   context.commit('SetLotteryId', data)
+    // },
+    // LotteryPage (context, data) {
+    //   // state.Lottery = data
+    //   context.commit('LotteryPage', data)
+    // },
+    // ShareCodeUpdate (context, data) {
+    //   context.commit('ShareCodeUpdate', data)
+    // },
     ColorSave (context, data) {
       context.commit('ColorSave', data)
     }

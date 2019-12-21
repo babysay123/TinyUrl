@@ -1,7 +1,9 @@
 @import '../base.color.scss';
 
 .login-form {
-  padding: 0 20px;
+  // padding: 0 20px;
+  padding: 0;
+  background: #fff;
 }
 
 .login-logo {
@@ -53,10 +55,10 @@
   content: '\F058';
 }
 
-.redBtn {
-  margin-left: 20px;
-  margin-right: 20px;
-}
+// .redBtn {
+//   margin-left: 20px;
+//   margin-right: 20px;
+// }
 
 .login-tip {
   text-align: center;

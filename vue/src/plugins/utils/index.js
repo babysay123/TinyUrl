@@ -10,7 +10,7 @@ import Storage from './StorageUtil/'
 // import Logger from './logger'
 
 export default {
-  // 'version': '5.2.3',
+  'version': '5.2.3',
   // 'switchLink': (content) => {
   //   // 筛选方法
   //   let _select = (url, str) => {

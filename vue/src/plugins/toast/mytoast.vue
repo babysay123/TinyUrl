@@ -1,28 +1,25 @@
 <template>
-   <div :class="showContent?'dialog-content dialog-common dialog-join':'dialog-content dialog-common dialog-leave'" v-if="show">
-        <div class="common-title">
-          <span>温馨提示</span>
-        </div>
-        <div class="hd">
-        </div>
-        <div class="dialong-right">
-          <img @click="closeove" src="../../assets/images/clear.png">
-        </div>
-        <div class="success">
-          <img src="../../assets/images/hint.png">
-        </div>
-        <div class="common-content" v-html="text"/>
-        <div class="btn-qr" v-if="btnShow">
-          <div @click="close">
-            <span>确认</span>
-          </div>
-          <div @click="closeove">
-            <span>
-              取消
-            </span>
-            </div>
-        </div>
+  <div :class="showContent?'dialog-content dialog-common dialog-join':'dialog-content dialog-common dialog-leave'" v-if="show">
+    <div class="common-title">
+      <span>温馨提示</span>
+    </div>
+    <div class="hd"></div>
+    <div class="dialong-right">
+      <img @click="closeove" src="../../assets/images/clear.png">
+    </div>
+    <div class="success">
+      <img src="../../assets/images/hint.png">
+    </div>
+    <div class="common-content" v-html="text"></div>
+    <div class="btn-qr" v-if="btnShow">
+      <div @click="close">
+        <span>确认</span>
       </div>
+      <div @click="closeove">
+        <span>取消</span>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -38,7 +35,7 @@ export default {
     animation: animate_out 0.25s;
     opacity: 0;
   }
-@keyframes animate_int {
+  @keyframes animate_int {
     0% {
       opacity: 0;
     }
@@ -46,7 +43,7 @@ export default {
       opacity: 1;
     }
   }
-@keyframes animate_out {
+  @keyframes animate_out {
     0% {
       opacity: 1;
     }
@@ -54,8 +51,8 @@ export default {
       opacity: 0;
     }
   }
-.dialog-content {
-  background: #fff;
+  .dialog-content {
+    background: #fff;
     position: absolute;
     z-index: 2;
     width: 8rem;
@@ -115,105 +112,105 @@ export default {
     }
   }
   .dialog-common {
-     position: fixed;
-     left: 50%;
+    position: fixed;
+    left: 50%;
     top:50%;
     transform: translate(-50%,-50%);
     z-index: 9999;
-  background: #fff;
-  min-height: 100px;
-  .common-title {
-    color: #fff;
-    height: 0.7rem;
-    left: -1px;
-    top: -1px;
-    width: 28%;
-    background: $baseCol;
-    line-height: .7rem;
-    text-align: center;
-    position: relative;
-    font-weight: 500;
-    float: left;
-    img {
-      width: 14px;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+    background: #fff;
+    min-height: 100px;
+    .common-title {
+      color: #fff;
+      height: 0.7rem;
+      left: -1px;
+      top: -1px;
+      width: 28%;
+      background: $baseCol;
+      line-height: .7rem;
+      text-align: center;
+      position: relative;
+      font-weight: 500;
+      float: left;
+      img {
+        width: 14px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .common-content {
+      padding-top: 8px;
+      padding-bottom: 29px;
+      margin: auto;
+      text-align: center;
+      font-weight: 400;
     }
   }
-  .common-content {
-    padding-top: 8px;
-    padding-bottom: 29px;
-    margin: auto;
-    text-align: center;
-    font-weight: 400;
-  }
-}
-  .btn-qr{
-  display: flex;
-   justify-content:center;
-  width: 100%;
-  height: .7rem;
-  color: #fff;
-  margin-bottom: 10px;
-  div{
-    width: 60px;
+  .btn-qr {
+    display: flex;
+    justify-content:center;
+    width: 100%;
     height: .7rem;
-    background: $baseCol;
-    border-radius: 4px;
-    text-align: center;
-    line-height: .7rem;
-    margin: auto;
-    cursor:pointer;
+    color: #fff;
+    margin-bottom: 10px;
+    div {
+      width: 60px;
+      height: .7rem;
+      background: $baseCol;
+      border-radius: 4px;
+      text-align: center;
+      line-height: .7rem;
+      margin: auto;
+      cursor:pointer;
+    }
   }
-}
-.btn-qr1{
-  margin: auto;
-     float: right;
-  width: 50%;
-  height: .7rem;
-  color: #fff;
-  margin-bottom: 10px;
-  div{
-    width: 60px;
+  .btn-qr1 {
+    margin: auto;
+    float: right;
+    width: 50%;
     height: .7rem;
-    background: $baseCol;
-    border-radius: 4px;
-    text-align: center;
-    line-height: .7rem;
-    margin: auto;
-    cursor:pointer;
+    color: #fff;
+    margin-bottom: 10px;
+    div {
+      width: 60px;
+      height: .7rem;
+      background: $baseCol;
+      border-radius: 4px;
+      text-align: center;
+      line-height: .7rem;
+      margin: auto;
+      cursor:pointer;
+    }
   }
-}
-.dialong-right{
-  float: right;
-  margin-top: -35px;
-  margin-right: -11px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.dialong-right img{
-  width: 26px;
-}
-.hd{
-  background:url('../../assets/images/hudu.png') repeat;
-  background-size: 100% 100%;
-  background-color: $baseCol;
-  width: 71%;
-  float: left;
-  height: .7rem;
-  margin-left: -.1rem;
-  margin-top: -1px;
-}
-.success{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-   img {
-    width: 22px;
+  .dialong-right {
+    float: right;
+    margin-top: -35px;
+    margin-right: -11px;
+    border-radius: 50%;
+    overflow: hidden;
   }
-}
+  .dialong-right img {
+    width: 26px;
+  }
+  .hd {
+    background:url('../../assets/images/hudu.png') repeat;
+    background-size: 100% 100%;
+    background-color: $baseCol;
+    width: 71%;
+    float: left;
+    height: .7rem;
+    margin-left: -.1rem;
+    margin-top: -1px;
+  }
+  .success {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    img {
+      width: 22px;
+    }
+  }
 </style>
