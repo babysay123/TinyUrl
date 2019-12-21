@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <section>
-    <Head :backHandler="() => { this.routerLink({ path: '/index' }) }">
+    <Head>
       <h3>登录</h3>
     </Head>
 
@@ -66,7 +66,7 @@
 
     <!-- 登录失败跳转客服 -->
     <p style="text-align: center;">登录失败？请联系客服</p>
-    <div v-if="mask" class="submit-mask" />
+    <div v-if="mask" class="submit-mask"></div>
     <!-- <img :src="this.base64url"> -->
   </section>
 </template>

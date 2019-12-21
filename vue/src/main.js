@@ -7,7 +7,7 @@ import router from './router/index'
 // import Mint from 'mint-ui'
 import store from './stores/index'
 import Utils from 'Plugins/utils'
-// import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import BenAmrRecorder from 'benz-amr-recorder'
 // import indexedDB from '@/assets/js/betting/chatRoom/indexedDB'
 // 引入全局打包配置
@@ -17,7 +17,7 @@ import VueLazyload from 'vue-lazyload'
 // 插件注册
 // import '@/plugins/axios' // axiosAjax
 import 'Plugins/rem/flexible'
-// import 'swiper/dist/css/swiper.css'
+import 'swiper/dist/css/swiper.css'
 // import 'Assets/fonts/iconfont.css'
 // import 'Assets/icon/iconfont.css'
 // 导入 MUI 的样式表， 和 Bootstrap 用法没有差别
@@ -117,7 +117,7 @@ Vue.mixin(Mixins)
 
 // vue 配置和use其他
 // Vue.use(Mint) // vue全局安装mint
-// Vue.use(VueAwesomeSwiper)
+Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 // Vue.prototype.$Amr = BenAmrRecorder
@@ -136,7 +136,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-  // console.log(to.name)
+
   // if (sourceQuery.includes(to.name)) {
   //   try {
   //     sourceHearApi({ 'operationType': 1 })

@@ -10,6 +10,7 @@
     </div> -->
 
     <div class="login-form">
+      <Carousel :imgClick="false" />
       <!-- <LoginInput
         v-model="input.account"
         placeholder="请输入账号"
@@ -32,8 +33,8 @@
       ></Verification> -->
     </div>
 
-    <div class="redBtn">登录</div>
-    <div class="whiteBtn">注册</div>
+    <div class="redBtn" @click="jump('login')">登录</div>
+    <div class="whitBtn" @click="jump('register')">注册</div>
 
     <!-- <div class="forget">
       <a>忘记密码？</a>
@@ -74,6 +75,7 @@
 
 <script>
 import Head from 'Components/global/head'
+import Carousel from 'Components/index/carousel'
 // import LoginInput from 'Components/login/loginInput'
 // import Verification from 'Components/login/verification'
 // import { usernameValid, passwordValid } from 'Plugins/validator'
@@ -82,7 +84,8 @@ import Head from 'Components/global/head'
 // import { Base64 } from 'js-base64'
 export default {
   components: {
-    Head
+    Head,
+    Carousel
     // LoginInput,
     // Verification
   },
@@ -101,18 +104,23 @@ export default {
   methods: {
     // ...mapMutations([ 'updateUserInfo' ]),
     // ...mapActions([ 'getNewAccessToken', 'websocket' ]),
-    base64ImgtoFile (dataurl, filename = 'file') {
-      let arr = dataurl.split(',')
-      let mime = arr[0].match(/:(.*?);/)[1]
-      let suffix = mime.split('/')[1]
-      let bstr = atob(arr[1])
-      let n = bstr.length
-      let u8arr = new Uint8Array(n)
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n)
-      }
-      return new File([u8arr], `${filename}.${suffix}`, {
-        type: mime
+    // base64ImgtoFile (dataurl, filename = 'file') {
+    //   let arr = dataurl.split(',')
+    //   let mime = arr[0].match(/:(.*?);/)[1]
+    //   let suffix = mime.split('/')[1]
+    //   let bstr = atob(arr[1])
+    //   let n = bstr.length
+    //   let u8arr = new Uint8Array(n)
+    //   while (n--) {
+    //     u8arr[n] = bstr.charCodeAt(n)
+    //   }
+    //   return new File([u8arr], `${filename}.${suffix}`, {
+    //     type: mime
+    //   })
+    // },
+    jump (url) {
+      this.routerLink({
+        path: '/' + url
       })
     },
     onValid () {

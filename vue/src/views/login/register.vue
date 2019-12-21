@@ -73,7 +73,7 @@
       <div class="law-textarea" v-html="law" />
     </div>
 
-    <div v-if="mask" class="submit-mask" />
+    <div v-if="mask" class="submit-mask"></div>
   </section>
 </template>
 
