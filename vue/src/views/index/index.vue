@@ -59,23 +59,24 @@
   -moz-animation: rotate 1s linear infinite;
   -o-animation: rotate 1s linear infinite;
   animation: rotate 1s linear infinite;
- }
-  @-webkit-keyframes rotate {
-    from { -webkit-transform: rotate(0deg) }
-    to { -webkit-transform: rotate(360deg) }
- }
- @-moz-keyframes rotate {
-    from { -moz-transform: rotate(0deg) }
-    to { -moz-transform: rotate(359deg) }
- }
- @-o-keyframes rotate {
-   from { -o-transform: rotate(0deg) }
-     to { -o-transform: rotate(359deg) }
- }
- @keyframes rotate {
-   from{ transform: rotate(0deg) }
-     to{ transform: rotate(359deg) }
- }
+}
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotate(0deg) }
+  to { -webkit-transform: rotate(360deg) }
+}
+@-moz-keyframes rotate {
+  from { -moz-transform: rotate(0deg) }
+  to { -moz-transform: rotate(359deg) }
+}
+@-o-keyframes rotate {
+  from { -o-transform: rotate(0deg) }
+    to { -o-transform: rotate(359deg) }
+}
+@keyframes rotate {
+  from{ transform: rotate(0deg) }
+  to{ transform: rotate(359deg) }
+}
+
 </style>
 
 <template>
@@ -126,6 +127,13 @@
       <el-button icon="el-icon-search"></el-button>
       <el-button type="danger" icon="el-icon-delete"></el-button>
     </el-row>
+    <GameTabs />
+    <Pop
+      :showToasts="popShows"
+      @toggleToast="toggleToast"
+    >
+      <Collapse :collList="collList" />
+    </Pop>
     <!-- <Dragon v-if="showDragon && dragon" @closeDragon="dragon = false"/> -->
 
     <!-- 彩票-棋牌切换 -->
@@ -143,6 +151,9 @@ import Head from 'Components/global/head'
 // import Carousel from 'Components/index/carousel'
 // import BannerNotice from 'Components/index/bannerNotice'
 // import Dragon from 'Components/lottery/chatroom/module/dragon'
+import Pop from 'Components/global/all-pop'
+import Collapse from 'Components/global/all-collapse'
+import GameTabs from 'Components/index/gameTabs'
 import NavBottom from 'Components/global/nav-bottom'
 // import GenerEarn from 'Components/index/generEarn'
 // import { noticeApi, transferMoney } from 'Plugins/api'
@@ -155,6 +166,9 @@ export default {
     Head,
     // Carousel,
     // BannerNotice,
+    GameTabs,
+    Pop,
+    Collapse,
     NavBottom
     // Dragon,
     // Tab,
@@ -171,7 +185,11 @@ export default {
       navType: '',
       onlyShowGame: false,
       userBalance: null,
-      refreshSty: false
+      refreshSty: false,
+      // 弹窗组件
+      popShows: true,
+      // 折叠组件
+      collList: []
     }
   },
   computed: {
@@ -303,6 +321,10 @@ export default {
       // this.notices = notices
       // this.records = records
       // console.log(tabs)
+    },
+    toggleToast () {
+      this.popShows = !this.popShows
+      // this.clearPop()
     },
     setNavType (type) {
       this.navType = type === 'lottery' ? type : 'game'

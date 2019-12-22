@@ -1,75 +1,20 @@
 <!--  -->
-<style lang="scss" scoped>
-@import 'Assets/css/base.color.scss';
-
-.footer-menu {
-  position: fixed;
-  bottom: 0;
-  border-top: 1px solid #ccc;
-  background: #f5f4f9;
-  max-width: 780px;
-  height: 48px;
-  text-align: center;
-  li {
-    height: 48px;
-    float: left;
-    width: 20%;
-    img {
-      width: 24px;
-    }
-    span {
-      font-size: 12px;
-    }
-  }
-}
-
-.nav-icon {
-  margin: 4px auto;
-  overflow: hidden;
-  position: relative;
-  .iconfont {
-    font-size: 20px;
-  }
-}
-
-.pic1 {
-  position: absolute;
-  left: -32px;
-  -webkit-filter: drop-shadow(32px 0 $baseCol);
-  -moz-filter: drop-shadow(32px 0 $baseCol);
-  -ms-filter: drop-shadow(32px 0 $baseCol);
-  filter: drop-shadow(32px 0 $baseCol);
-}
-.rankingInfo-ren {
-    text-align: center;
-    position: absolute;
-    right: 6px;
-    z-index: 2;
-    width: 18px;
-    height: 18px;
-    background: #FF0000;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    font-size: 10px;
-    line-height: 18px;
-    color: #fff;
-  }
-</style>
-
 <template>
   <ul class="footer-menu">
     <li v-for="(n, index) in isOpenChatRoom" :key="index" @click="routerLink(n.link)">
       <div class="nav-icon">
-        <i
+        <!-- <i
           class="icon iconfont"
           :class="[n.icon, n.link.includes(currentLink) ? 'text-col' : n.link === '/mobile/studio/#/chatroom' ? 'text-blue' : 'text-gray']"
-        ></i>
+        ></i> -->
         <!-- <span class="rankingInfo-ren" v-if="index == 2 && chatRoom.unreadMsgRed > 0">
           {{ chatRoom.unreadMsgRed > 99 ? '99+' : chatRoom.unreadMsgRed }}
         </span> -->
         <!-- <img :class="{'pic1': n.link.includes(currentLink)}" :src="n.default"> -->
       </div>
-
+      <span>
+        {{ n.text }}
+      </span>
       <!-- <span :class="[ n.link.includes(currentLink) ? 'text-col' : n.link === '/chatroom' ? 'text-blue' : 'text-gray' ]">
         {{ n.text }}
       </span> -->
@@ -277,3 +222,59 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import 'Assets/css/base.color.scss';
+.footer-menu {
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #ccc;
+  background: #f5f4f9;
+  max-width: 780px;
+  height: 48px;
+  text-align: center;
+  li {
+    height: 48px;
+    float: left;
+    width: 20%;
+    img {
+      width: 24px;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+.nav-icon {
+  margin: 4px auto;
+  overflow: hidden;
+  position: relative;
+  .iconfont {
+    font-size: 20px;
+  }
+}
+
+.pic1 {
+  position: absolute;
+  left: -32px;
+  -webkit-filter: drop-shadow(32px 0 $baseCol);
+  -moz-filter: drop-shadow(32px 0 $baseCol);
+  -ms-filter: drop-shadow(32px 0 $baseCol);
+  filter: drop-shadow(32px 0 $baseCol);
+}
+.rankingInfo-ren {
+    text-align: center;
+    position: absolute;
+    right: 6px;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background: #FF0000;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 18px;
+    color: #fff;
+  }
+</style>
