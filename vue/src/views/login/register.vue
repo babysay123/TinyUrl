@@ -1,7 +1,11 @@
 <!--  -->
 <template>
-  <section style="margin-top: 1.125rem; overflow: hidden; margin-bottom: 50px;">
-    <Head fixed>
+  <section>
+    <!--
+      style="margin-top: 1.125rem; overflow: hidden; margin-bottom: 50px;"
+    -->
+    <!-- fixed -->
+    <Head>
       <h3>注册</h3>
     </Head>
 
@@ -13,26 +17,27 @@
 
       <LoginInput
         v-for="b in base"
+        v-model="input[b.model]"
         :key="b.model"
         :icon="b.icon"
-        v-model="input[b.model]"
+        :iconSize="b.iconSize"
         :placeholder="b.placeholder"
         :inputType="b.inputType"
         :maxLength="b.maxLength"
         :minLength="b.minLength"
       />
 
-      <LoginInput
+      <!-- <LoginInput
         v-for="c in config"
+        v-model="subjoin[c.model]"
         :key="c.model"
         :icon="c.model"
-        v-model="subjoin[c.model]"
         :placeholder="`请填写${c.name}${c.required === 0 ? '(选填)' : '(必填)' }`"
         :inputType="c.inputType"
         :maxLength="c.maxLength"
         :minLength="c.minLength"
         :disabled="c.model === 'referrer' && hasReferrer"
-      />
+      /> -->
 
       <!-- <Verification
         v-model="input.verifyImg"
@@ -46,19 +51,9 @@
       <a @click="agreement = true">《用户服务协议》</a>
     </div> -->
 
-    <div class="redBtn" @click="onSubmit">注册</div>
+    <div class="common-btn redBtn" @click="onSubmit">注册</div>
 
-    <!-- <div
-      class="whitBtn"
-      @click="routerLink({
-        path: '/mobile/other/download.html',
-        params: $route.query.c ? `?c=${$route.query.c}` : null,
-        redirect: true
-      })"
-    >
-      下载App
-    </div> -->
-
+    <LinkService />
     <!-- <div class="login-tip">
       <span>
         已有账号？
@@ -80,6 +75,7 @@
 <script>
 import Head from 'Components/global/head'
 import LoginInput from 'Components/login/loginInput'
+import LinkService from 'Components/login/linkService'
 import Verification from 'Components/login/verification'
 // import { registerConfigApi, registerApi, verificationApi } from 'Plugins/api'
 import {
@@ -100,6 +96,7 @@ export default {
   components: {
     Head,
     LoginInput,
+    LinkService,
     Verification
   },
   data () {
@@ -135,6 +132,7 @@ export default {
           model: 'mobile',
           placeholder: '请输入手机号码',
           icon: 'mobile',
+          iconSize: 'big',
           minLength: '11',
           maxLength: '11'
         },
@@ -142,6 +140,7 @@ export default {
           model: 'mail',
           placeholder: '请输入短信验证码',
           icon: 'user',
+          iconSize: 'small',
           minLength: '4',
           maxLength: '16'
         },
@@ -149,7 +148,7 @@ export default {
           model: 'password',
           placeholder: '请输入密码(6-12个英文字母或数字)',
           inputType: 'password',
-          icon: 'password',
+          icon: 'lock',
           minLength: '6',
           maxLength: '12'
         },
@@ -157,7 +156,7 @@ export default {
           model: 'repassword',
           placeholder: '请再次输入密码',
           inputType: 'password',
-          icon: 'password',
+          icon: 'lock',
           minLength: '6',
           maxLength: '12'
         }

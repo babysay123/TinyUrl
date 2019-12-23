@@ -1,6 +1,13 @@
 <template>
   <div class="login-group" :class="{ 'login-group-focus': focus }">
-    <i class="login-group-icon icon iconfont" :class="[ iconClass, focus ? 'icon-focus' : '' ]" />
+    <!-- <i class="login-group-icon icon iconfont" :class="[ iconClass, focus ? 'icon-focus' : '' ]" /> -->
+    <i
+      :style="{
+        'font-size': (iconSize === 'big' ? '32px' : iconSize === 'small' ? '22px' : ''),
+        'height': (iconSize === 'big' ? '37px' : iconSize === 'small' ? '32px' : '')
+      }"
+      :class="'login-group-icon fa fa-fw fa-' + icon"
+    ></i>
     <input
       v-model="val"
       :type="inputType === 'password' ? 'password' : 'text'"
@@ -11,6 +18,7 @@
       :style="{ color: disabled ? '#333' : 'inherit' }"
       @input="ele => inputNumber(ele.target.value)"
     >
+    <a class="login-send-valid">发送验证码</a>
     <!-- @focus="focus = true"
       @blur="focus = false" -->
   </div>
@@ -36,6 +44,9 @@ export default {
     },
     rule: {
       type: Function
+    },
+    iconSize: {
+      type: String
     },
     icon: {
       type: String
@@ -99,8 +110,9 @@ export default {
   transition: .35s ease;
   .login-group-icon {
     width: 30px;
-    height: 42px;
-    font-size: 30px;
+    // height: 42px;
+    height: 35px;
+    font-size: 26px;
     color: #979797;
   }
   .icon-focus {
@@ -112,13 +124,18 @@ export default {
     outline: none;
     height: 40px;
     line-height: 40px;
-    padding-left: 10px;
+    padding-left: 6px;
     font-size: 14px;
     border: none;
   }
 }
 .login-group-focus {
   background-size: 100% 2px, 100% 1px;
+}
+
+.login-send-valid {
+  display: none;
+  position: absolute;
 }
 
 </style>

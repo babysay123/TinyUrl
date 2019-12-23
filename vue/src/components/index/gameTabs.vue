@@ -16,12 +16,6 @@
         {{ item.content }}
       </swiper-slide>
     </swiper> -->
-    <el-carousel trigger="click" height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
-      </el-carousel-item>
-    </el-carousel>
-    <!--
     <ul class="tabs-ul">
       <li
         v-for="(item, i) in cols"
@@ -31,6 +25,12 @@
         <a @click="switchTab(item)">{{ item.tab }}</a>
       </li>
     </ul>
+    <el-carousel trigger="click" height="150px">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <h3 class="small">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
+    <!--
     <div class="tabs-content">
       <el-card class="tabs-card card-red" shadow="hover">卡片1</el-card>
       <el-card class="tabs-card card-blue" shadow="hover">卡片2</el-card>

@@ -13,6 +13,7 @@
       <LoginInput
         v-model="input.account"
         placeholder="请输入账号"
+        iconSize="big"
         icon="mobile"
         minLength="4"
         maxLength="16"
@@ -21,7 +22,7 @@
         v-model="input.password"
         :inputType="'password'"
         placeholder="请输入密码"
-        icon="password"
+        icon="lock"
         minLength="6"
         maxLength="12"
       />
@@ -32,7 +33,7 @@
       ></Verification> -->
     </div>
 
-    <div class="redBtn" @click="onSubmit">登录</div>
+    <div class="common-btn redBtn" @click="onSubmit">登录</div>
 
     <div class="forget">
       <a>忘记密码？</a>
@@ -63,9 +64,7 @@
         <router-link to='/register'>立即注册</router-link>
       </span>
     </div> -->
-
-    <!-- 登录失败跳转客服 -->
-    <p style="text-align: center;">登录失败？请联系客服</p>
+    <LinkService />
     <div v-if="mask" class="submit-mask"></div>
     <!-- <img :src="this.base64url"> -->
   </section>
@@ -74,6 +73,7 @@
 <script>
 import Head from 'Components/global/head'
 import LoginInput from 'Components/login/loginInput'
+import LinkService from 'Components/login/linkService'
 import Verification from 'Components/login/verification'
 // import { usernameValid, passwordValid } from 'Plugins/validator'
 // import { loginApi, verificationApi } from 'Plugins/api'
@@ -83,6 +83,7 @@ export default {
   components: {
     Head,
     LoginInput,
+    LinkService,
     Verification
   },
   data () {
