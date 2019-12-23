@@ -134,9 +134,9 @@ export default {
       }
       img {
         display: block;
-        width: 42px;
+        width: 36px;
         padding-left: 50%;
-        margin-left: -21px;
+        margin-left: -18px;
       }
       span {
         display: block;
@@ -148,8 +148,6 @@ export default {
       }
       &:last-child {
         margin-right: 0;
-        // a {
-        // }
       }
     }
   }

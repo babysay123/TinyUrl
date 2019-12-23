@@ -18,7 +18,7 @@
       :style="{ color: disabled ? '#333' : 'inherit' }"
       @input="ele => inputNumber(ele.target.value)"
     >
-    <a class="login-send-valid">发送验证码</a>
+    <a v-if="key === 'mail'" class="login-send-valid">发送验证码</a>
     <!-- @focus="focus = true"
       @blur="focus = false" -->
   </div>
@@ -27,6 +27,9 @@
 <script>
 export default {
   props: {
+    key: {
+      type: String
+    },
     value: {
       type: [ String, Number ],
       required: true
@@ -108,6 +111,8 @@ export default {
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   transition: .35s ease;
+  position: relative;
+
   .login-group-icon {
     width: 30px;
     // height: 42px;
@@ -134,8 +139,16 @@ export default {
 }
 
 .login-send-valid {
-  display: none;
+  // display: none;
   position: absolute;
+  line-height: 24px;
+  color: #fff;
+  background: #d81e06;
+  height: 24px;
+  right: 6px;
+  top: 8px;
+  padding: 0 6px;
+  border-radius: 4px;
 }
 
 </style>

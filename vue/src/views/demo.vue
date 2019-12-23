@@ -14,7 +14,7 @@
       <Collapse :collList="collList" />
     </Pop> -->
     <!-- <SendRed /> -->
-    <RedDetail />
+    <!-- <RedDetail /> -->
     <NavBottom />
   </section>
 </template>
@@ -29,7 +29,7 @@ import Head from 'Components/global/head'
 import Pop from 'Components/global/all-pop'
 import Collapse from 'Components/global/all-collapse'
 // import GameTabs from 'Components/index/gameTabs'
-import RedDetail from 'Components/game/redDetail'
+// import RedDetail from 'Components/game/redDetail'
 import SendRed from 'Components/game/sendRedBag'
 import NavBottom from 'Components/global/nav-bottom'
 // import GenerEarn from 'Components/index/generEarn'
@@ -48,7 +48,7 @@ export default {
     Pop,
     Collapse,
     SendRed,
-    RedDetail,
+    // RedDetail,
     NavBottom
     // Dragon,
     // Tab,

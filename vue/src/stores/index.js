@@ -13,7 +13,6 @@ import Vuex from 'vuex'
 // import global from './global'
 // import football from './football'
 // import game from './game'
-// import mine from './mine'
 // import agency from './agency'
 // import active from './active'
 // import amount from './amount'
@@ -21,6 +20,8 @@ import Vuex from 'vuex'
 // import voice from './voice'
 // import Axios from 'Plugins/axios'
 // import Utils from 'Plugins/utils'
+import mine from './mine'
+import ChatRoom from './chatroom'
 // import {
 //   Toast
 // } from 'mint-ui'
@@ -73,11 +74,12 @@ export default new Vuex.Store({
     // global: global,
     // football: football,
     // game: game,
-    // mine: mine,
+    mine: mine,
     // agency: agency,
     // active: active,
     // amount: amount,
     // variety: variety
     // voice: voice
+    chatroom: ChatRoom
   }
 })

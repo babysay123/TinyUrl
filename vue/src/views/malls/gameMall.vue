@@ -1,5 +1,8 @@
 <template>
   <el-main style="padding: 0;">
+    <Head>
+      <h3>游戏</h3>
+    </Head>
     <!-- <Carousel :imgClick="false" /> -->
     <div class="mall-top">
       <el-carousel
@@ -16,13 +19,14 @@
     </div>
     <BannerNotice
       :data="notices"
-      style="padding-bottom: 4px; margin-bottom: 4px;" />
+      style="padding-bottom: 2px; margin-bottom: 4px;" />
     <GameTabs class="game-tabs-content" />
     <NavBottom />
   </el-main>
 </template>
 
 <script>
+import Head from 'Components/global/head'
 import Carousel from 'Components/index/carousel'
 import GameTabs from 'Components/index/gameTabs'
 import BannerNotice from 'Components/index/bannerNotice'
@@ -31,6 +35,7 @@ import NavBottom from 'Components/global/nav-bottom'
 export default {
   name: 'gameMall',
   components: {
+    Head,
     Carousel,
     BannerNotice,
     GameTabs,
