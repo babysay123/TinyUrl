@@ -27,6 +27,14 @@ let router = new Router({
       title: '首页'
     }
   },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: resolve => require(['Views/demo.vue'], resolve),
+    meta: {
+      title: 'Demo'
+    }
+  },
   ...login,
   ...malls
   // ...mine

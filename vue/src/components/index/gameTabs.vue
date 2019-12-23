@@ -18,16 +18,32 @@
     </swiper> -->
     <ul class="tabs-ul">
       <li
-        v-for="(item, i) in cols"
+        v-for="(item, i) in navTabs"
         :key="i + '-game-tab'"
+        @click="clickSwitch(item, i)"
       >
         <img :src="item.url">
-        <a @click="switchTab(item)">{{ item.tab }}</a>
+        <span>{{ item.tab }}</span>
       </li>
     </ul>
-    <el-carousel trigger="click" height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
+    <!-- height="150px" -->
+    <el-carousel
+      trigger="click"
+      :interval="0"
+      arrow="never"
+      indicator-position="none"
+      ref="carousel"
+      class="carousel-height"
+    >
+      <el-carousel-item
+        v-for="item in 4"
+        :key="item"
+        style="height: auto;"
+      >
+        <div class="tabs-content">
+          {{ item }}
+          <el-card class="tabs-card card-red" shadow="hover" @click="enterGame()">卡片1</el-card>
+        </div>
       </el-carousel-item>
     </el-carousel>
     <!--
@@ -47,27 +63,36 @@ export default {
   data () {
     return {
       navTabs: [
-        { name: '红包', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaa component' },
-        { name: '彩票', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaabb component' },
-        { name: '彩票2', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaacc component' },
-        { name: '彩票3', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaadd component' }
+        { name: '红包', type: 'redbag', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaa component' },
+        { name: '彩票', type: 'lottery', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaabb component' },
+        { name: '彩票2', type: 'lottery2', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaacc component' },
+        { name: '彩票3', type: 'lottery3', url: 'https://555.0234.co/mobile/images/index/home_icon_dragon@2x.png', content: 'aaadd component' }
       ],
       swiperOption: {
         loop: true
       },
-      content: {}
+      content: {
+        redbag: []
+      }
     }
   },
   created () {
-    console.log(this.setActiveItem)
+    // console.log(this.setActiveItem)
   },
-  method: {
+  methods: {
     init () {
       console.log('init')
     },
-    switchTab (item) {
+    clickSwitch (item, i) {
+      console.log(item, i)
+      // console.log(this.$refs.carousel)
+      this.$refs.carousel.setActiveItem(i)
+    },
+    enterGame (item) {
       console.log(item)
-      console.log(this.$refs.carousel.setActiveItem(2))
+      if (item.url) {}
+      // this.routeLink({
+      // })
     }
   }
 }
@@ -80,50 +105,6 @@ export default {
   position: relative;
   overflow: hidden;
 
-  .swiper-tabs {
-    // display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
-    display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
-    // display: -webkit-box;   /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
-    // display: -moz-box;      /* 老版本语法: Firefox (buggy) */
-    // display: -ms-flexbox;   /* 混合版本语法: IE 10 */
-    overflow: hidden;
-    // position: fixed;
-    // top: 1.125rem;
-    // max-width: 780px;
-    width: 100%;
-    background: #fff;
-    z-index: 10;
-    border-bottom: 1px solid #eee;
-    box-sizing: border-box;
-
-    a {
-      flex: 1;
-      justify-content: center;
-      color: #333;
-      text-align: center;
-      width: 25%;
-      img {
-        display: block;
-        width: 40px;
-        padding-left: 50%;
-        margin-left: -20px;
-      }
-      span {
-        // line-height: 1rem;
-        // height: 1rem;
-        line-height: 22px;
-        height: 22px;
-      }
-    }
-  }
-
-  .swiper-slide {
-    overflow: hidden;
-  }
-  .swiper-slide-active {
-    overflow: auto !important;
-  }
-
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
@@ -134,7 +115,7 @@ export default {
   }
 
   .el-carousel__item:nth-child(2n) {
-     background-color: #99a9bf;
+    background-color: #99a9bf;
   }
 
   .tabs-ul {
@@ -157,7 +138,7 @@ export default {
         padding-left: 50%;
         margin-left: -21px;
       }
-      a {
+      span {
         display: block;
         line-height: 22px;
         height: 22px;
@@ -182,18 +163,25 @@ export default {
         margin-bottom: 0;
       }
     }
-    .card-red {
-
+  }
+  .carousel-height {
+    height: calc(100% - 66px);
+    .el-carousel__container {
+      height: calc(100% - 66px);
+      overflow-y: auto;
     }
-    .card-green {
+  }
+  .card-red {
 
-    }
-    .card-blue {
+  }
+  .card-green {
 
-    }
-    .card-yellow {
+  }
+  .card-blue {
 
-    }
+  }
+  .card-yellow {
+
   }
 }
 </style>
