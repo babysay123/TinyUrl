@@ -12,7 +12,15 @@ export default [
     name: 'register',
     component: resolve => require(['Views/login/register.vue'], resolve),
     meta: {
-      title: '快速注册'
+      title: '注册'
+    }
+  },
+  {
+    path: '/forgetPwd',
+    name: 'forgetPwd',
+    component: resolve => require(['Views/login/forgetPwd.vue'], resolve),
+    meta: {
+      title: '忘记密码'
     }
   }
 ]

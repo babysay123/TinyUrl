@@ -4,6 +4,9 @@
 // import Vue from 'vue'
 import axios from 'axios'
 import Utils from 'Plugins/utils'
+import { Message } from 'element-ui'
+import router from '../../router/index'
+let { Storage } = Utils
 // import { Indicator, Toast } from 'mint-ui'
 // import router from '../../router'
 // import store from '../../store/index.js'
@@ -29,10 +32,11 @@ import Utils from 'Plugins/utils'
 
 let config = {
   headers: {
-    'sessionid': null,
+    // 'sessionid': null,
     // 'X-Requested-With': Utils.XRequestedWith || 'XMLHttpRequest',
-    // 'Content-Type': 'application/json; charset=utf-8',
-    'client-version': Utils.version
+    'User-Role': 'MEMBER',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Client-Version': Utils.Version
   },
   config: null,
   timeout: 60 * 1000 // Timeout
@@ -77,29 +81,38 @@ _axios.interceptors.request.use(
     // config.baseURL = devEnv.hosturl
     envModeSwitch(config)
     // 新版头部
+    // user id
+    let user = Storage.get('userInfo') || null
+    if (user) {
+      config.headers['User-Id'] = user.id
+    }
+    // device id
+    let deviceId = Storage.get('deviceId') || null
+    if (deviceId) {
+      config.headers['Device-Id'] = deviceId
+    }
+    // access token
+    let accessToken = Storage.get('accessToken') || null
+    if (accessToken) {
+      config.headers['Access-Token'] = accessToken
+    }
+    config.headers['Client-Version'] = Utils.Version
     // // temporary-sessionId
     // let Temporary = Utils.Storage.get('temporaryId') || null
     // if (Temporary) {
     //   config.headers['temporary-sessionId'] = Temporary
     // }
-    // user-agent-app
-    // let _user_agent_app = Utils.Storage.get('user-agent-app') || null
-    // if (_user_agent_app) {
-    //   config.headers['user-agent-app'] = _user_agent_app
-    // }
-    let userAgentApp = Utils.userAgent || null
-    if (userAgentApp) {
-      config.headers['user-agent-app'] = userAgentApp
-    }
+
     // 把公共请求部分拦截实时赋值
     // let _sessionid = Utils.Storage.get('sessionid') ? Utils.Storage.get('sessionid') : null
     // config.headers.sessionid = _sessionid
     // config.headers.openId = store.state['chatRoom']['init'] ? store.state['chatRoom']['init']['message']['member']['openid'] : null
-    // config.headers['client-version'] = Utils.version
+
     // let RequestedWith = Utils.Storage.get('X-Requested-With') || 'XMLHttpRequest'
     // if (RequestedWith) {
     //   config.headers['X-Requested-With'] = RequestedWith
     // }
+
     if (!config.noIndicator) {
       // Indicator.open({
       //   spinnerType: 'fading-circle'
@@ -138,12 +151,25 @@ _axios.interceptors.response.use(
     if (OnceStatus === '1') {
       OnceStatus = ''
     }
-    console.log(response)
-    // // 链接成功并后台有返回
-    // if (response.status >= 200 || response.status <= 304) {
-    //   const { code, msg } = response.data
-    //   if (code === 0 || code === 101) {
-    //     return response.data
+    let height = window.innerHeight - 90
+    // console.log(response)
+    // 链接成功并后台有返回
+    if (response.status >= 200 || response.status <= 304) {
+      const { code, msg } = response.data
+      if (code === 0 || code === 101) {
+      } else {
+        // console.log(msg)
+        Message({
+          type: 'warning',
+          message: msg,
+          offset: height
+        })
+        // 登录失效，重新登录
+        if (code >= 300 && code < 400) {
+          router.replace('/login')
+        }
+      }
+      return response.data
     //   } else if (code >= 300 && code < 400) {
     //     // 登录失效，重新登录
     //     // Toast({
@@ -221,7 +247,7 @@ _axios.interceptors.response.use(
     //   //   duration: 1800
     //   // })
     //   return response.data
-    // }
+    }
   },
   (error) => {
     // Do something with response error

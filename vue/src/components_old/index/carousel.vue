@@ -17,10 +17,10 @@
         <img :src="c.image"
           :height="`${containerHeight - 6}px`"
           @click="routerLink({
-          //  path: c.image.match(/http[\S]*.html/)
-          //  ? c.image.match(/http[\S]*.html/)[0]
-          //  : `/mobile/mall/innerHtml.html?url=/front/discountoff/detail.do?id=${c.discountoff_id}`,
-          path:'/mobile/studio/#/preferActive',
+            //  path: c.image.match(/http[\S]*.html/)
+            //  ? c.image.match(/http[\S]*.html/)[0]
+            //  : `/mobile/mall/innerHtml.html?url=/front/discountoff/detail.do?id=${c.discountoff_id}`,
+            path:'/mobile/studio/#/preferActive',
             redirect: true
           })"
         >

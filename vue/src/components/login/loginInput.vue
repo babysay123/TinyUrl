@@ -2,11 +2,7 @@
   <div class="login-group" :class="{ 'login-group-focus': focus }">
     <!-- <i class="login-group-icon icon iconfont" :class="[ iconClass, focus ? 'icon-focus' : '' ]" /> -->
     <i
-      :style="{
-        'font-size': (iconSize === 'big' ? '32px' : iconSize === 'small' ? '22px' : ''),
-        'height': (iconSize === 'big' ? '37px' : iconSize === 'small' ? '32px' : '')
-      }"
-      :class="'login-group-icon fa fa-fw fa-' + icon"
+      :class="'login-group-icon icon-' + icon"
     ></i>
     <input
       v-model="val"
@@ -18,16 +14,28 @@
       :style="{ color: disabled ? '#333' : 'inherit' }"
       @input="ele => inputNumber(ele.target.value)"
     >
-    <a v-if="key === 'mail'" class="login-send-valid">发送验证码</a>
+    <a
+      v-if="isMail"
+      class="login-send-valid"
+      @click="sendMail"
+    >{{ sendMsg + (!this.canSend && 's') }}</a>
     <!-- @focus="focus = true"
       @blur="focus = false" -->
   </div>
 </template>
 
 <script>
+import { mailvalidApi } from 'Plugins/api'
+import { mobileValid } from 'Plugins/validator'
+
 export default {
   props: {
-    key: {
+    // 短信验证码用
+    isMail: {
+      type: Boolean
+    },
+    // 短信验证码的手机value
+    needMobile: {
       type: String
     },
     value: {
@@ -67,7 +75,9 @@ export default {
   data () {
     return {
       val: this.value,
-      focus: false
+      focus: false,
+      canSend: true,
+      sendMsg: '发送验证码'
     }
   },
   computed: {
@@ -91,6 +101,62 @@ export default {
         this.val = val.replace(/[^\d]/g, '')
       }
       this.$emit('input', this.val)
+    },
+    countDown () {
+      if (this.canSend) {
+        this.canSend = false
+        this.sendMsg = 60
+      }
+      if (!this.canSend && this.sendMsg === 0) {
+        this.canSend = true
+        this.sendMsg = '发送验证码'
+        return
+      }
+
+      setTimeout(() => {
+        this.sendMsg -= 1
+        this.countDown()
+      }, 1000)
+    },
+    async sendMail () {
+      // console.log(this.needMobile)
+      let height = window.innerHeight - 80
+      if (!this.needMobile || !mobileValid(this.needMobile)) {
+        this.$message({
+          duration: 2 * 1000,
+          message: '请输入正确的手机号码',
+          offset: height,
+          // type: 'none'
+          type: 'error'
+        })
+        return
+      }
+      // 倒计时 60s 结束前不能发送请求
+      if (this.canSend) {
+        this.countDown()
+      } else {
+        return
+      }
+
+      // 传参
+      let params = {
+        type: 'REG', // 注册时专用
+        account: this.needMobile,
+        code: 86, // 国家代码，固定86
+        language: 'cn-ZH' // 短信语言，固定中文
+      }
+      // console.log(params)
+      const res = await mailvalidApi(params)
+      // console.log(res)
+      const { code } = res
+      if (code === 0) {
+        this.$message({
+          duration: 2 * 1000,
+          message: '验证码发送成功~',
+          offset: height,
+          type: 'success'
+        })
+      }
     }
   }
 }
@@ -104,8 +170,8 @@ export default {
   align-items: flex-end;
   // height: 50px;
   // line-height: 50px;
-  height: 42px;
-  line-height: 42px;
+  height: 44px;
+  line-height: 44px;
   background-image: linear-gradient($baseCol, $baseCol), linear-gradient(#e2e2e2, #e2e2e2);
   background-position: center bottom, center bottom;
   background-size: 0 2px, 100% 1px;
@@ -115,10 +181,27 @@ export default {
 
   .login-group-icon {
     width: 30px;
+    height: 100%;
     // height: 42px;
-    height: 35px;
-    font-size: 26px;
+    // height: 35px;
+    // font-size: 26px;
     color: #979797;
+    &.icon-mobile {
+      background: url('/mobile/img/login/login_phone@3x.png') no-repeat center center;
+      background-size: 22px;
+    }
+    &.icon-lock {
+      background: url('/mobile/img/login/login_password@3x.png') no-repeat center center;
+      background-size: 22px;
+    }
+    &.icon-referrer {
+      background: url('/mobile/img/login/login_invite@3x.png') no-repeat center center;
+      background-size: 22px;
+    }
+    &.icon-mail {
+      background: url('/mobile/img/login/login_verification@3x.png') no-repeat center center;
+      background-size: 22px;
+    }
   }
   .icon-focus {
     color: $baseCol;
@@ -127,9 +210,9 @@ export default {
     background: none;
     flex: 1;
     outline: none;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 6px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 2px;
     font-size: 14px;
     border: none;
   }
@@ -149,6 +232,8 @@ export default {
   top: 8px;
   padding: 0 6px;
   border-radius: 4px;
+  width: 60px;
+  text-align: center;
 }
 
 </style>

@@ -2,8 +2,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from './login'
-// import mine from './mine'
+import mine from './mine'
 import malls from './malls'
+import others from './others'
+import agency from './agency'
 
 Vue.use(Router)
 
@@ -15,7 +17,7 @@ let router = new Router({
     name: '',
     component: resolve => require(['Views/index/beforeLogin.vue'], resolve),
     meta: {
-      title: '注册登录'
+      title: '首页'
     }
     // redirect: '/index'
   },
@@ -36,8 +38,10 @@ let router = new Router({
     }
   },
   ...login,
-  ...malls
-  // ...mine
+  ...malls,
+  ...mine,
+  ...agency,
+  ...others
   // {
   //   path: '/',
   //   name: '',

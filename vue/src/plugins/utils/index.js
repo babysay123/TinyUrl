@@ -10,7 +10,6 @@ import Storage from './StorageUtil/'
 // import Logger from './logger'
 
 export default {
-  'version': '5.2.3',
   // 'switchLink': (content) => {
   //   // 筛选方法
   //   let _select = (url, str) => {
@@ -83,6 +82,9 @@ export default {
   //   }
   //   return s
   // },
+  Version: '1.0.0',
+  Name: '',
+  ProxyUrl: '',
   Dates,
   Storage
   // UserTool

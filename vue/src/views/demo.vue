@@ -1,10 +1,10 @@
 
 <template>
   <section style="margin-top: 1.125rem; padding-bottom: 49px;">
-    <!-- <Head :back="false" fixed> -->
+    <Head fixed :backHandler="() => { this.routerLink({ path: '/index' }) }">
       <!-- <a v-if="!isLogin" class="menu-left" @click="routerLink({ path: '/login' })">登录</a> -->
       <!-- <a v-if="!isLogin" class="menu-right" @click="routerLink({ path: '/register' })">注册</a> -->
-    <!-- </Head> -->
+    </Head>
     <!-- <Carousel /> -->
     <!-- <GameTabs /> -->
     <!-- <Pop
@@ -26,12 +26,12 @@ import Head from 'Components/global/head'
 // import Carousel from 'Components/index/carousel'
 // import BannerNotice from 'Components/index/bannerNotice'
 // import Dragon from 'Components/lottery/chatroom/module/dragon'
-import Pop from 'Components/global/all-pop'
-import Collapse from 'Components/global/all-collapse'
+import Pop from 'Components/global/allPop'
+import Collapse from 'Components/global/allCollapse'
 // import GameTabs from 'Components/index/gameTabs'
 // import RedDetail from 'Components/game/redDetail'
-import SendRed from 'Components/game/sendRedBag'
-import NavBottom from 'Components/global/nav-bottom'
+// import SendRed from 'Components/game/sendRedBag'
+import NavBottom from 'Components/global/navBottom'
 // import GenerEarn from 'Components/index/generEarn'
 // import { noticeApi, transferMoney } from 'Plugins/api'
 // import { mapGetters, mapActions } from 'vuex'
@@ -47,7 +47,7 @@ export default {
     // GameTabs,
     Pop,
     Collapse,
-    SendRed,
+    // SendRed,
     // RedDetail,
     NavBottom
     // Dragon,

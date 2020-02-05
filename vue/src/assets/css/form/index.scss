@@ -1,0 +1,152 @@
+@import "../base.color.scss";
+// 重新定义样式
+/deep/ .el-form-item {
+  margin: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+/deep/ .el-input {
+  font-size: 0.375rem;
+}
+
+/deep/ .el-form-item__label {
+  font-size: 0.375rem;
+  padding: 0 6px 0 6px;
+  // text-align: left;
+}
+
+/deep/ .el-input__inner {
+  border: none;
+  border-radius: none;
+  font-size: 0.375rem;
+  text-align: right;
+}
+
+/deep/ .el-select-dropdown__item {
+  font-size: 0.375rem;
+  padding: 0 0.5rem;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+/deep/ .el-button {
+  margin: 16px 0 0 0;
+  font-size: 0.375rem;
+  padding: 8px 12px;
+}
+
+/deep/ .el-switch {
+  margin-right: 10px;
+}
+
+/deep/ .el-checkbox__label {
+  font-size: 0.375rem;
+}
+
+// 弹窗重新样式
+.dialog-restyle {
+  /deep/ .el-dialog {
+    background: $baseBg;
+    border-radius: 4px;
+  }
+  /deep/ .el-dialog__header {
+    padding: 10px 16px 10px;
+    background: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  /deep/ .el-dialog__title {
+    line-height: 22px;
+    font-size: 14px;
+  }
+  /deep/ .el-dialog--center .el-dialog__body {
+    padding: 0;
+    margin: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+.dialog-fullstyle {
+  /deep/ .dialog {
+    background: $baseBg;
+  }
+  /deep/ .el-dialog__header {
+    padding: 0;
+  }
+  /deep/ .el-dialog--center .el-dialog__body {
+    padding: 0;
+  }
+
+}
+
+// 右对齐
+.align-right {
+  text-align: right;
+}
+
+// 设置input的样式
+.setting-input {
+  text-decoration: none;
+  display: block;
+  /deep/ .el-input.is-disabled .el-input__inner {
+    background: #fff;
+    border: none;
+    color: initial;
+  }
+}
+
+.form-tips {
+  text-align: center;
+  font-weight: 100;
+  margin: 0 0 10px 0;
+  // font-size: 0.375rem;
+  font-size: 12px;
+}
+
+// 弹窗样式
+.dialog-type-box {
+  // margin: 10px 10px 0 10px;
+  nav {
+    overflow: hidden;
+    position: relative;
+    a {
+      width: calc((100% - 4 * 16px) / 3);
+      display: block;
+      box-sizing: border-box;
+      border: 1px solid #333;
+      font-size: 13px;
+      text-align: center;
+      float: left;
+      line-height: 1rem;
+      height: 1rem;
+      border-radius: 4px;
+      margin: 16px 0 0 16px;
+      &.active {
+        border: 1px solid $baseCol;
+        background-color: $baseCol;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.dialog-bottom {
+  margin-top: 16px;
+  background: #ed4a67;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  .dialog-btn {
+    font-size: 14px;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    display: block;
+    color: #fff;
+  }
+}

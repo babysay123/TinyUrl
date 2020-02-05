@@ -1,13 +1,8 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-09-16 14:07:14
- * @LastEditTime: 2019-10-27 20:24:16
- * @LastEditors: Please set LastEditors
- -->
+<!-- -->
 <template>
-  <section style="margin-top: 1.125rem; overflow: hidden; margin-bottom: 50px;">
-    <Head fixed>
+  <section>
+    <!--  style="margin-top: 1.125rem; overflow: hidden; margin-bottom: 50px;" fixed -->
+    <Head>
       <h3>快速注册</h3>
     </Head>
 

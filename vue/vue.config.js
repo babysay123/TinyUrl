@@ -86,8 +86,8 @@ module.exports = {
     // open: true,
     proxy: {
       '/api': {
-        // target: 'http://192.168.3.72:8020',
-        target: 'http://555.0234.co',
+        target: 'https://hyaena.org',
+        // target: 'http://555.0234.co',
         changeOrigin: true,
         ws: true,
         pathRewrite: {

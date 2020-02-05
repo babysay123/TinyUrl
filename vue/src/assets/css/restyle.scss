@@ -1,0 +1,16 @@
+.el-message {
+    // min-width: auto !important;
+    min-width: 60vw;
+    padding: 8px 8px 8px 10px;
+    font-size: 14px;
+    .el-message__content {
+        font-size: 13px;
+        line-height: 18px;
+    }
+    &.el-message--none {
+        padding-left: 8px;
+        .el-message__content {
+            color: #909399;
+        }
+    }
+}

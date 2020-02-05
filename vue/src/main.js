@@ -11,7 +11,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import BenAmrRecorder from 'benz-amr-recorder'
 // import indexedDB from '@/assets/js/betting/chatRoom/indexedDB'
 // 引入全局打包配置
-// import TEMPLATE_CONFIG from '../statics.config'
+import { Package, Name, Version, ProxyUrl } from '../statics.config'
 import VueLazyload from 'vue-lazyload'
 // import { Howl, Howler } from 'howler'
 // 插件注册
@@ -25,7 +25,6 @@ import 'swiper/dist/css/swiper.css'
 // 导入 MUI 的样式表，扩展图标样式，购物车图标
 // 还需要加载图标字体文件
 // import './lib/mui/css/icons-extra.css'
-
 // import 'mint-ui/lib/style.css' // mint css和js分离
 
 // 自定义全局指令
@@ -37,12 +36,12 @@ import Mixins from 'Plugins/mixins'
 
 // 二维码插件
 // import VueQriously from 'vue-qriously'
-
 import _axios from 'Plugins/axios'
 
 // login, register style
-import 'Assets/css/login/index.scss' // vue 原型链配置 utils （全局）
 import 'element-ui/lib/theme-chalk/index.css'
+import 'Assets/css/login/index.scss' // vue 原型链配置 utils （全局）
+import 'Assets/css/common.scss'
 
 // import { InfiniteScroll } from 'vue-ydui/dist/lib.rem/infinitescroll'
 // import 'vue-ydui/dist/ydui.base.css'
@@ -72,58 +71,56 @@ Vue.use(VueLazyload, {
   error: require('../public/img/lottery/icon_revocation1@3x.png')
 })
 
-Object.keys(Directives).map(key => Vue.directive(key, Directives[key]))
-Object.keys(Filters).map(key => Vue.filter(key, Filters[key]))
+Object
+  .keys(Directives)
+  .map(key => Vue.directive(key, Directives[key]))
+Object
+  .keys(Filters)
+  .map(key => Vue.filter(key, Filters[key]))
 Vue.mixin(Mixins)
 // Vue.use(VueQriously)
 
-// console.log(TEMPLATE_CONFIG)
-// 更新版本号
-// Utils.XRequestedWith = 'XMLHttpRequest-Utils'
-// Utils.version = TEMPLATE_CONFIG.clientVersion || '5.2.0'
-// Utils['projectName'] = TEMPLATE_CONFIG.name || '彩票8'
-// Utils['package'] = TEMPLATE_CONFIG.package || 'cp01'
+// TODO: 全局Utils
+Utils['name'] = Name || ''
+Utils['Version'] = Version || '1.0.0'
+Utils['proxyUrl'] = ProxyUrl || ''
+Utils['package'] = Package || ''
 
-// Utils['chatURL'] = (type) => {
-//   // let b = 'msg2-service.0234.co'
-//   // if (type === 'ws') {
-//   //   return 'ws://' + b
-//   // } else {
-//   //   return 'http://' + b
-//   // }
-//   // if (type === 'file') {
-//   //   return 'http://ftp.27o1.cn/upload/image'
-//   // } else if (type === 'ws') {
-//   //   // return 'ws://d9a72789-cp01-msg-ws.0234.co'
-//   //   return 'ws://msg2-service.0234.co'
-//   // } else {
-//   //   // return 'http://d9a72789-cp01-msg.0234.co'
-//   //   return 'http://msg2-service.0234.co'
-//   // }
-
-//   // global 替换
-//   if (type === 'file') {
-//     return TEMPLATE_CONFIG.ftp ? location.protocol + '//' + TEMPLATE_CONFIG.ftp + '/upload/image' : location.protocol + '//' + 'ftp.27o1.cn/upload/image'
-//   } else if (type === 'ws') {
-//     if (location.protocol.indexOf('https') > -1) {
-//       return TEMPLATE_CONFIG.chatWs ? 'wss://' + TEMPLATE_CONFIG.chatWs : 'wss://msg2-service.0234.co'
-//     } else {
-//       return TEMPLATE_CONFIG.chatWs ? 'ws://' + TEMPLATE_CONFIG.chatWs : 'ws://msg2-service.0234.co'
-//     }
-//   } else {
-//     return TEMPLATE_CONFIG.chatHttp ? location.protocol + '//' + TEMPLATE_CONFIG.chatHttp : 'https://msg2-service.0234.co'
-//   }
-// }
+Utils['chatURL'] = (type) => {
+  // global 替换
+  // if (type === 'file') {
+  // return Ftp
+  //   ? location.protocol + '//' + Ftp + '/upload/image'
+  //   : location.protocol + '//' + 'ftp.27o1.cn/upload/image'
+  // }
+  if (type === 'ws') {
+    // websocket
+    if (location.protocol.indexOf('https') > -1) {
+      return ProxyUrl
+        ? 'wss://' + ProxyUrl
+        : 'wss://msg2-service.0234.co'
+    } else {
+      return ProxyUrl
+        ? 'ws://' + ProxyUrl
+        : 'ws://msg2-service.0234.co'
+    }
+  } else {
+    // http
+    return ProxyUrl
+      ? location.protocol + '//' + ProxyUrl
+      : 'https://msg2-service.0234.co'
+  }
+}
 
 // vue 配置和use其他
 // Vue.use(Mint) // vue全局安装mint
 Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+Vue.prototype.Utils = Utils
 // Vue.prototype.$Amr = BenAmrRecorder
 // Vue.prototype.$Howl = Howl
 // Vue.prototype.$Howler = Howler
-Vue.prototype.Utils = Utils
 
 router.beforeEach((to, from, next) => {
   const { title } = to.meta
@@ -143,10 +140,6 @@ router.beforeEach((to, from, next) => {
   //   } catch (error) {}
   // }
 })
-
-// if (TEMPLATE_CONFIG.source && typeof TEMPLATE_CONFIG.source === 'function') {
-//   TEMPLATE_CONFIG.source()
-// }
 
 new Vue({
   router,

@@ -106,7 +106,11 @@ import Popup from 'Components/global/popup'
 import Modify from './modify'
 import Avatar from './avatar'
 import Confirm from 'Components/global/confirm'
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import {
+  // mapState,
+  // mapGetters,
+  mapMutations
+} from 'vuex'
 export default {
   components: { Head, Cell, CellItems, Popup, Modify, Avatar, Confirm },
   data () {
@@ -117,10 +121,10 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      chatRoom: state => state.chatRoom
-    }),
-    ...mapGetters([ 'getUserInfo', 'personalInfo', 'avatar' ]),
+    // ...mapState({
+    //   chatRoom: state => state.chatRoom
+    // }),
+    // ...mapGetters([ 'getUserInfo', 'personalInfo', 'avatar' ]),
     userCell () {
       // 获取用户数据
       const userInfo = this.getUserInfo

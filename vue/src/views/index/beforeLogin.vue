@@ -8,13 +8,19 @@
     <div class="login-form login-before-login">
       <el-carousel
         trigger="click"
-        height="150px"
+        height="140px"
         arrow="never"
+        v-if="bannerData.length > 0"
       >
         <el-carousel-item
           style="border-radius: 4px;"
-          v-for="item in 4" :key="item">
-          <h3 class="small">{{ item }}</h3>
+          v-for="(item, i) in bannerData.filter(e => e.type === 'LOGIN')"
+          :key="i + '-banner'"
+        >
+          <!-- <h3 class="small">{{ item }}</h3> -->
+          <div>
+            <img style="width: 100%; height: 140px;" :src="item.imgUrl" alt="">
+          </div>
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -28,6 +34,9 @@
 <script>
 import Head from 'Components/global/head'
 import Carousel from 'Components/index/carousel'
+import { commonInitApi } from 'Plugins/api'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     Head,
@@ -37,19 +46,27 @@ export default {
   },
   data () {
     return {
-      input: {
-        account: '',
-        password: '',
-        headImg: ''
-      },
-      isRemember: false,
-      mask: false,
+      // input: {
+      //   account: '',
+      //   password: '',
+      //   headImg: ''
+      // },
+      // isRemember: false,
+      // mask: false,
+      bannerData: [],
       base64url: ''
     }
   },
+  computed: {
+    ...mapGetters([ 'User' ])
+  },
   beforeCreate () {
-    console.log('before create')
+    // console.log('before create')
+    // console.log(this.Utils)
     // 登录判断
+    // const userInfo = this.Utils.Storage.get('userInfo')
+    // console.log(userInfo)
+    // device id 判断
   },
   methods: {
     jump (url) {
@@ -59,11 +76,27 @@ export default {
     }
   },
   created () {
+    if (this.User && this.User.socketToken) {
+      // console.log(this.User)
+      // const { id, accessToken, socketToken } = this.UserInfo
+      // console.log(id, accessToken, socketToken)
+      this.$router.push({
+        path: '/malls/gameMall'
+      })
+    }
+
+    // 初始化
+    commonInitApi()
+      .then(res => {
+        const { code, data } = res
+        if (code === 0) {
+          this.bannerData = data.banner
+        }
+      })
     // if (this.Utils.Storage.get('remember')) {
     //   this.isRemember = true
     //   this.input = JSON.parse(atob(this.Utils.Storage.get('remember')))
     // }
-    // this.switch1()
     // this.Utils.Storage.remove('ws')
   }
 }
@@ -93,7 +126,7 @@ export default {
   color: #475669;
   font-size: 14px;
   opacity: 0.75;
-  line-height: 150px;
+  line-height: 140px;
   margin: 0;
   text-align: center;
 }

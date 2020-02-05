@@ -6,13 +6,13 @@
  * @Description: In User Settings Edit
  * @FilePath: \cp8h5\vue\src\plugins\api\index.js
  */
-// export * from './global'
+export * from './global'
 // export * from './result'
 // export * from './game'
-// export * from './index/'
-// export * from './login'
-// export * from './mine'
-// export * from './chatroom'
+export * from './index/'
+export * from './login'
+export * from './chatroom'
+export * from './mine'
 // export * from './recharge'
 // export * from './agency'
 // export * from './active'
